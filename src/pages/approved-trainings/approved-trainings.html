@@ -1,0 +1,96 @@
+<style>
+    .pending-assessment-page {
+        padding: 80px 20px 20px 20px;
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .logo {
+        width: 150px;
+        height: 115px;
+        margin-bottom: 110px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .justify-center {
+        justify-content: center;
+    }
+
+    .login-btn {
+        width: 100%;
+        background: #ffffff;
+        border-radius: 50px;
+        font-weight: 600;
+        padding: 12px;
+        font-size: 14px;
+        color: #b765d3;
+        margin-top: 30px;
+    }
+
+    .form .item-md {
+        background: transparent;
+        color: #ffffff;
+        padding-left: 0;
+    }
+
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+        color: #ffffff;
+    }
+
+    .form {
+        padding: 0 20px;
+    }
+
+    .domain-form.list-md .item-block .item-inner {
+        border-bottom: 2px solid red !important;
+    }
+
+    .domain-field {
+        width: 150px !important;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .domain-block {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .domain-block h4 {
+        margin: 0;
+        color: #ffffff;
+    }
+</style>
+<div class="pending-assessment-page">
+    <ion-header no-border>
+        <ion-navbar color="yellow" hideBackButton="true">
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>Approved Trainings</ion-title>
+        </ion-navbar>
+    </ion-header>
+    <ion-content padding>
+        <div class="" *ngFor="let approved_training of approved_trainings; let i = index">
+            <ion-card>
+                <ion-card-content>
+                    <div class="training-card">
+                        <div>
+                            <h4>{{ approved_training.name }}</h4>
+                            <p class="time">{{approved_training.time}}</p>
+                        </div>
+                        <div>
+                            <p class="date">{{approved_training.date}}</p>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </ion-content>
+
+</div>

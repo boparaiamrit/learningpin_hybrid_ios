@@ -1,0 +1,189 @@
+<style>
+    .my-trainings-page {
+        padding: 10px 0 80px 0;
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .logo {
+        width: 150px;
+        height: 115px;
+        margin-bottom: 110px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .justify-center {
+        justify-content: center;
+    }
+
+    .login-btn {
+        width: 100%;
+        background: #ffffff;
+        border-radius: 50px;
+        font-weight: 600;
+        padding: 12px;
+        font-size: 14px;
+        color: #b765d3;
+        margin-top: 30px;
+    }
+
+    .form .item-md {
+        background: transparent;
+        color: #ffffff;
+        padding-left: 0;
+    }
+
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+        color: #ffffff;
+    }
+
+    .form {
+        padding: 0 20px;
+    }
+
+    .domain-form.list-md .item-block .item-inner {
+        border-bottom: 2px solid red !important;
+    }
+
+    .domain-field {
+        width: 150px !important;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .domain-block {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .domain-block h4 {
+        margin: 0;
+        color: #ffffff;
+    }
+
+</style>
+<div class="main-page my-trainings-page" >
+    <ion-scroll scrollY="true" style="height:100%;">
+        <div class="calendar-header">
+            <ion-row class="calendar-month">
+                <ion-col col-2 (click)="goToLastMonth()">
+                    <ion-icon name="arrow-back"></ion-icon>
+                </ion-col>
+                <ion-col col-8 class="current-month">
+                    {{currentMonth}}, {{currentYear}}
+                </ion-col>
+                <ion-col col-2 (click)="goToNextMonth()">
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </div>
+        <ion-slides #slider (ionSlideNextEnd)="loadNext()" (ionSlidePrevEnd)="loadPrev()" [initialSlide]="1">
+            <ion-slide *ngFor="let n of numbers;let i = index;">
+                <div class="calendar-body">
+                    <ion-grid>
+                        <ion-row class="calendar-weekday">
+                            <ion-col>Sun</ion-col>
+                            <ion-col>Mon</ion-col>
+                            <ion-col>Tue</ion-col>
+                            <ion-col>Wed</ion-col>
+                            <ion-col>Thu</ion-col>
+                            <ion-col>Fri</ion-col>
+                            <ion-col>Sat</ion-col>
+                        </ion-row>
+                        <ion-row class="calendar-date">
+                            <div *ngIf="i==0">
+                                <ion-col col-1 *ngFor="let lastDay of daysInLastMonth0" class="last-month">
+                                    {{lastDay}}
+                                </ion-col>
+                            </div>
+
+                            <div *ngIf="i==1">
+                                <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month">
+                                    {{lastDay}}
+                                </ion-col>
+                            </div>
+
+                            <div *ngIf="i==2">
+                                <ion-col col-1 *ngFor="let lastDay of daysInLastMonth1" class="last-month">
+                                    {{lastDay}}
+                                </ion-col>
+                            </div>
+
+
+                            <div *ngIf="i==0">
+                                <ion-col col-1 *ngFor="let day of daysInThisMonth0">
+                                <span [class]="setClass(day)"
+                                      *ngIf="trainingDates.indexOf(currentMonth.substring(0,3) + ' '+day)>=0; else otherDate"
+                                      (click)="calenderClick(currentMonth.substring(0,3) + ' '+day)"
+                                      tappable>{{day}}</span>
+                                    <ng-template #otherDate class="otherDate">{{day}}</ng-template>
+                                </ion-col>
+                            </div>
+
+                            <div *ngIf="i==1">
+                                <ion-col col-1 *ngFor="let day of daysInThisMonth">
+                            <span [class]="setClass(day)"
+                                  *ngIf="trainingDates.indexOf(currentMonth.substring(0,3) + ' '+day)>=0; else otherDate"
+                                  (click)="calenderClick(currentMonth.substring(0,3) + ' '+day)" tappable>{{day}}</span>
+                                    <ng-template #otherDate class="otherDate">{{day}}</ng-template>
+                                </ion-col>
+                            </div>
+
+                            <div *ngIf="i==2">
+                                <ion-col col-1 *ngFor="let day of daysInThisMonth1">
+                        <span [class]="setClass(day)"
+                              *ngIf="trainingDates.indexOf(currentMonth.substring(0,3) + ' '+day)>=0; else otherDate"
+                              (click)="calenderClick(currentMonth.substring(0,3) + ' '+day)" tappable>{{day}}</span>
+                                    <ng-template #otherDate class="otherDate">{{day}}</ng-template>
+                                </ion-col>
+                            </div>
+
+
+                            <div *ngIf="i==0">
+                                <ion-col col-1 *ngFor="let nextDay of daysInNextMonth0" class="next-month">
+                                    {{nextDay}}
+                                </ion-col>
+                            </div>
+
+                            <div *ngIf="i==1">
+                                <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month">
+                                    {{nextDay}}
+                                </ion-col>
+                            </div>
+
+                            <div *ngIf="i==2">
+                                <ion-col col-1 *ngFor="let nextDay of daysInNextMonth1"
+                                         class="next-month">{{nextDay}}
+                                </ion-col>
+                            </div>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </ion-slide>
+        </ion-slides>
+
+        <div class="mytrainings-block">
+            <div class="" *ngFor="let training of mytrainings; let i = index">
+                <ion-card (click)='presentConfirm(training.name,training.time,training.date,training.id)' tappable>
+                    <ion-card-content>
+                        <div class="training-card">
+                            <div>
+                                <h4>{{ training.name }}</h4>
+                                <p class="time">{{training.time}}</p>
+                            </div>
+                            <div>
+                                <p class="date">{{training.date}}</p>
+                            </div>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </div>
+    </ion-scroll>
+</div>
+

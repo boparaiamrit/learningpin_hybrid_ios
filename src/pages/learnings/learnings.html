@@ -1,0 +1,93 @@
+<style>
+    .learning-page {
+        padding: 10px 0 70px 0;
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .logo {
+        width: 150px;
+        height: 115px;
+        margin-bottom: 110px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .justify-center {
+        justify-content: center;
+    }
+
+    .login-btn {
+        width: 100%;
+        background: #ffffff;
+        border-radius: 50px;
+        font-weight: 600;
+        padding: 12px;
+        font-size: 14px;
+        color: #b765d3;
+        margin-top: 30px;
+    }
+
+    .form .item-md {
+        background: transparent;
+        color: #ffffff;
+        padding-left: 0;
+    }
+
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+        color: #ffffff;
+    }
+
+    .form {
+        padding: 0 20px;
+    }
+
+    .domain-form.list-md .item-block .item-inner {
+        border-bottom: 2px solid red !important;
+    }
+
+    .domain-field {
+        width: 150px !important;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .domain-block {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .domain-block h4 {
+        margin: 0;
+        color: #ffffff;
+    }
+
+</style>
+<div class="learning-page">
+    <ion-scroll scrollY="true" style="height:100%;">
+        <div class="" *ngFor="let learning of mylearnings; let i = index">
+            <ion-card>
+                <ion-card-content>
+                    <div class="learning-card">
+                        <div class="image"
+                             style="background: url('assets/imgs/teacher_training.png');background-size: cover">
+
+                        </div>
+                        <div class="learning-data">
+                            <h4>{{ learning.title }}</h4>
+                            <p class="time">{{learning.description}}</p>
+                            <div>
+                                <button ion-button color="yellow" (click)='download(learning.video)'>Download</button>
+                                <button ion-button color="primary" (click)='play(learning.video)'>Play</button>
+                            </div>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </ion-scroll>
+</div>

@@ -1,0 +1,63 @@
+page-home {
+
+}
+
+ion-card {
+  border-left: 4px solid #ffcd00;
+  border-radius: 4px;
+  width: 100% !important;
+  margin: 0 0 15px 0 !important;
+}
+
+.attempt-button {
+  margin: 0 !important;
+}
+
+.training-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-head {
+  padding: 0 !important;
+}
+
+.training-popup-card h5 {
+  color: #000000;
+}
+
+.time {
+  font-size: 12px;
+  color: #bababa;
+  margin: 0;
+}
+
+.date {
+  font-size: 12px;
+  color: #ffcd00;
+  font-weight: 600;
+  margin: 0;
+}
+
+.alert-md .alert-message, .alert-md .alert-input-group {
+  padding: 0 20px !important;
+}
+
+.alert-md .alert-button {
+  width: 100%;
+  background: #ffcd00;
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.alert-button-group {
+  padding: 10px 20px !important;
+}
+
+.alert-md .alert-button .button-inner {
+  display: flex;
+  justify-content: center;
+}

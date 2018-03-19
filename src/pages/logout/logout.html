@@ -1,0 +1,76 @@
+<style>
+    .main-page {
+        background: linear-gradient(to bottom, #4e3cf7, #c86dd7);
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .logo {
+        width: 150px;
+        height: 115px;
+        margin-bottom: 110px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .justify-center {
+        justify-content: center;
+    }
+
+    .login-btn {
+        width: 100%;
+        background: #ffffff;
+        border-radius: 50px;
+        font-weight: 600;
+        padding: 12px;
+        font-size: 14px;
+        color: #b765d3;
+        margin-top: 30px;
+    }
+
+    .form .item-md {
+        background: transparent;
+        color: #ffffff;
+        padding-left: 0;
+    }
+
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+        color: #ffffff;
+    }
+
+    .form {
+        padding: 0 20px;
+    }
+
+    .login-form.list-md .item-block .item-inner {
+        border-bottom: 2px solid red !important;
+    }
+
+    .main-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+</style>
+<div class="main-page">
+    <div class="flex justify-center">
+        <img src="assets/imgs/LEARNING-PIN-white_logo.png" class="logo" alt="">
+    </div>
+    <ion-list class="form login-form">
+        <!--<p *ngIf="error" class="text-center" ion-text color="danger">Invalid Credentials</p>-->
+        <ion-item>
+            <ion-label floating>Username</ion-label>
+            <ion-input type="text" [(ngModel)]="username"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <div padding>
+            <button block class="login-btn" (click)='login()'>Log In</button>
+        </div>
+    </ion-list>
+</div>

@@ -1,0 +1,23 @@
+page-home {
+
+}
+.domain-block h4{
+  border-bottom: 1px solid #dedede;
+}
+
+.domain-block .domain-field.input-has-focus{
+  border-bottom: 1px solid #dedede !important;
+}
+
+.domain-block .domain-field.input-has-focus .item-inner{
+  border-bottom: 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+//domain-field item item-block item-md item-input item-label-floating ng-pristine ng-valid ng-touched item-has-input item-has-focus input-has-focus
+.domain-block .text-input-md{
+  text-align: right;
+  font-weight: 400 !important;
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+

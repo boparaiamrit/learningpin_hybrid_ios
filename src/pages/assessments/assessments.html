@@ -1,0 +1,93 @@
+<style>
+    .assessment-page {
+        padding: 10px 0 70px 0;
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .logo {
+        width: 150px;
+        height: 115px;
+        margin-bottom: 110px;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .justify-center {
+        justify-content: center;
+    }
+
+    .login-btn {
+        width: 100%;
+        background: #ffffff;
+        border-radius: 50px;
+        font-weight: 600;
+        padding: 12px;
+        font-size: 14px;
+        color: #b765d3;
+        margin-top: 30px;
+    }
+
+    .form .item-md {
+        background: transparent;
+        color: #ffffff;
+        padding-left: 0;
+    }
+
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+        color: #ffffff;
+    }
+
+    .form {
+        padding: 0 20px;
+    }
+
+    .domain-form.list-md .item-block .item-inner {
+        border-bottom: 2px solid red !important;
+    }
+
+    .domain-field {
+        width: 150px !important;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .domain-block {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .domain-block h4 {
+        margin: 0;
+        color: #ffffff;
+    }
+
+</style>
+<div class="assessment-page">
+    <ion-scroll scrollY="true" style="height:100%;">
+        <div class="" *ngFor="let assessment of assessments; let i = index">
+            <ion-card>
+                <ion-card-content>
+                    <div class="training-card">
+                        <div class="full-width">
+                            <h4 class="yellow-font bold">{{ assessment.assessment_name }}</h4>
+                            <h4 *ngIf="assessment.training_id!=null; else noTraining">Training: <span class="bold">{{assessment.training_name}}</span>
+                            </h4>
+                            <ng-template #noTraining><h4>Training: <span class="bold">N.A.</span></h4></ng-template>
+                            <p>Time Limit: <span class="bold">{{assessment.time}}</span></p>
+                            <p>Total Number of Questions: <span class="bold">{{assessment.no_of_questions}}</span></p>
+                            <p>Maximum Marks: <span class="bold">{{assessment.max_marks}}</span></p>
+                            <button ion-button full color="yellow" class="attempt-button" (click)="attemptAssessment(assessment.assessment_id,assessment.training_id)">
+                                Attempt
+                            </button>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </ion-scroll>
+</div>

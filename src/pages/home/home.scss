@@ -1,0 +1,23 @@
+page-home {
+
+}
+
+.tabbar {
+  background: #ffffff;
+  opacity: 1;
+}
+
+ion-header::after {
+  background-image: none;
+}
+
+.tabs-md-white .tab-button, .tabs-md-white .tab-button .tab-button-icon {
+  border-bottom: 3px solid tranparent;
+  font-size: 14px;
+}
+
+.tabs-md-white .tab-button[aria-selected=true], .tabs-md-white .tab-button[aria-selected=true] .tab-button-icon {
+  border-bottom: 3px solid #f5a623;
+  color: #f5a623;
+  font-size: 14px;
+}
