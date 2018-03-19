@@ -72,6 +72,7 @@
         box-shadow: none !important;
         border-radius: 0 !important;
     }
+
 </style>
 <div class="take-assessment-page">
     <ion-header no-border>
@@ -83,13 +84,17 @@
         </ion-navbar>
     </ion-header>
     <div style="padding: 0 20px">
-        <h4 class="text-center bold">{{question}}</h4>
-        <p>{{option1}}</p>
-        <p>{{option2}}</p>
-        <p>{{option3}}</p>
-        <p>{{option4}}</p>
+        <h5 class="text-center bold">{{question}}</h5>
+        <p class="option" [class.active]="selectedItem == 1" (click)="selectOption(1,question_id,'a')">
+            {{option1}}</p>
+        <p class="option" [class.active]="selectedItem == 2" (click)="selectOption(2,question_id,'b')">
+            {{option2}}</p>
+        <p class="option" [class.active]="selectedItem == 3" (click)="selectOption(3,question_id,'c')">
+            {{option3}}</p>
+        <p class="option" [class.active]="selectedItem == 4" (click)="selectOption(4,question_id,'d')">
+            {{option4}}</p>
     </div>
-    <div class="flex space-between">
+    <div class="flex space-between assessment-action-btns">
         <button ion-button color="light-yellow" class="assessment-action-btn"
                 (click)="nextQuestion()">
             Next Question

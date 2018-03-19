@@ -1,0 +1,47 @@
+<style>
+    .completed-assessment-page {
+        padding: 20px 20px 0 20px;
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+</style>
+<div class="completed-assessment-page">
+    <ion-header no-border>
+        <ion-navbar color="yellow" hideBackButton="true">
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>Approved Trainings</ion-title>
+        </ion-navbar>
+    </ion-header>
+    <ion-content>
+        <ion-scroll scrollY="true" style="height:100%;">
+            <div class="" *ngFor="let assessment of assessments; let i = index">
+                <ion-card>
+                    <ion-card-content>
+                        <div class="training-card">
+                            <div class="full-width">
+                                <h4 class="yellow-font bold">{{ assessment.assessment_name }}</h4>
+                                <h4 *ngIf="assessment.training_id!=null; else noTraining">Training: <span class="bold">{{assessment.training_name}}</span>
+                                </h4>
+                                <ng-template #noTraining><h4>Training: <span class="bold">N.A.</span></h4></ng-template>
+                                <p>Time Limit: <span class="bold">{{assessment.time}}</span></p>
+                                <p>Total Number of Questions: <span class="bold">{{assessment.no_of_questions}}</span>
+                                </p>
+                                <p>Maximum Marks: <span class="bold">{{assessment.max_marks}}</span></p>
+                                <p>Attempt: <span class="bold">{{assessment.attempt}}</span></p>
+                                <p>Marks Obtained: <span class="bold">{{assessment.marks_obtained}}</span></p>
+                                <button ion-button *ngIf="assessment.can_retake" full color="yellow"
+                                        class="attempt-button"
+                                        (click)="attemptAssessment(assessment.assessment_id,assessment.training_id)">
+                                    Retake
+                                </button>
+                            </div>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </ion-scroll>
+    </ion-content>
+</div>

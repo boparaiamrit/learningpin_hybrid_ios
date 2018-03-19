@@ -62,32 +62,7 @@ ion-card {
   justify-content: center;
 }
 
-.take-assessment-page .option {
-  border-bottom: 1px solid #000000;
-  padding: 10px;
-  text-align: center;
 
+.assessment-page ion-card {
+  border-left: 0 !important;;
 }
-
-.take-assessment-page .option.active {
-  background: #f5a623;
-  color: #ffffff;
-}
-
-.take-assessment-page .assessment-action-btns {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.alert-md .alert-message, .alert-md .alert-input-group {
-  padding: 10px 20px 0 20px !important;
-}
-
-.alert-md .alert-button {
-  width: auto !important;
-  background: transparent;
-  margin: 0 0 0 10px !important;
-  color: #ffcd00;
-}
-

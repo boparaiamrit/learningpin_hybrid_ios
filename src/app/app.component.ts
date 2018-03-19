@@ -10,6 +10,7 @@ import {Headers, RequestOptions} from "@angular/http";
 import {Storage} from "@ionic/storage";
 import {GlobalProvider} from "../providers/global/global";
 import {ApprovedTrainings} from "../pages/approved-trainings/approved-trainings";
+import {CompletedAssessments} from "../pages/completed-assessments/completed-assessments";
 
 @Component({
     templateUrl: 'app.html'
@@ -28,6 +29,7 @@ export class MyApp {
             {title: 'Home', component: HomePage},
             {title: 'Pending Approvals', component: PendingApprovals},
             {title: 'Approved Trainings', component: ApprovedTrainings},
+            {title: 'Completed Assessments', component: CompletedAssessments},
             {title: 'Logout', component: LogoutPage}
         ];
 

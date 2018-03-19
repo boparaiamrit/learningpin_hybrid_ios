@@ -30,6 +30,7 @@ import { Calendar } from '@ionic-native/calendar';
 import { Slides } from 'ionic-angular';
 import {giveAssessment} from "../pages/giveAssessment/giveAssessment";
 import {takeAssessment} from "../pages/takeAssessment/takeAssessment";
+import {CompletedAssessments} from "../pages/completed-assessments/completed-assessments";
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {takeAssessment} from "../pages/takeAssessment/takeAssessment";
         ApprovedTrainings,
         giveAssessment,
         takeAssessment,
+        CompletedAssessments,
     ],
     imports: [
         BrowserModule,
@@ -72,6 +74,7 @@ import {takeAssessment} from "../pages/takeAssessment/takeAssessment";
         ApprovedTrainings,
         giveAssessment,
         takeAssessment,
+        CompletedAssessments,
     ],
     providers: [
         StatusBar,
