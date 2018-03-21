@@ -1,0 +1,160 @@
+page-home {
+
+}
+
+ion-card {
+  border-left: 4px solid #ffcd00;
+  border-radius: 4px;
+  width: 100% !important;
+  margin: 0 0 15px 0 !important;
+}
+
+.training-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mytrainings-block {
+  padding: 0 15px;
+}
+
+.calender-current-date {
+  font-size: 12px;
+}
+
+.calender-current-date-full, .current-month {
+  color: #f5a623;
+  font-size: 16px;
+}
+
+.alert-head {
+  padding: 0 !important;
+}
+
+.training-popup-card h5 {
+  color: #000000;
+}
+
+.time {
+  font-size: 12px;
+  color: #bababa;
+  margin: 0;
+}
+
+.date {
+  font-size: 12px;
+  color: #ffcd00;
+  font-weight: 600;
+  margin: 0;
+}
+
+.alert-md .alert-message, .alert-md .alert-input-group {
+  padding: 0 20px !important;
+}
+
+.alert-md .alert-button {
+  width: 100%;
+  background: #ffcd00;
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.alert-button-group {
+  padding: 10px 20px !important;
+}
+
+.alert-md .alert-button .button-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.col {
+  text-align: center;
+  padding: 5px;
+}
+
+.last-month, .next-month {
+  color: #999999;
+}
+
+.currentDate, .otherDate, .has-event-date {
+  padding: 5px;
+}
+
+.currentDate, .has-event-date {
+  background-color: #f5a623;
+  color: white;
+  border-radius: 30px;
+}
+
+.currentDate.more-padding {
+  padding: 5px 10px !important;
+}
+
+.calendar-month {
+  display: flex;
+  align-items: center;
+}
+
+.calendar-header {
+  //background-color: #1a732d;
+  color: #000000;
+}
+
+.event-bullet {
+  margin: 2px auto;
+  height: 5px;
+  width: 5px;
+  background-color: green;
+  border-radius: 30px;
+}
+
+.my-trainings-page .scroll-content {
+  padding: 0 !important;
+}
+.my-trainings-page ion-slide {
+  padding: 0 !important;
+}
+
+.selected-date {
+  width: 20px;
+  height: 2px;
+  background-color: blue;
+}
+
+.unselected-date {
+  border: none;
+}
+
+.calendar-body {
+  .grid {
+    padding: 0;
+  }
+  .col:last-child {
+    border-right: none;
+  }
+  .calendar-weekday, .calendar-date {
+    text-align: center;
+    margin: 0;
+  }
+  .calendar-weekday {
+    color: #9b9b9b;
+    font-size: 14px;
+    border-top: solid 1px #dedfe4;
+    border-bottom: solid 1px #dedfe4;
+  }
+  .calendar-date {
+    display: block !important;
+    margin-bottom: 20px;
+  }
+  .calendar-date .col {
+    max-width: 100% !important;
+    width: 14.2% !important;
+    float: left;
+    padding: 14px 6px;
+    border-bottom: 1px solid #dedfe4;
+  }
+}

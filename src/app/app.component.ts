@@ -1,6 +1,7 @@
 import {Component, ViewChild} from "@angular/core";
-import {Nav, Platform} from "ionic-angular";
+import { Nav, Platform} from "ionic-angular";
 import {StatusBar} from "@ionic-native/status-bar";
+import {Keyboard} from "@ionic-native/keyboard";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {HomePage} from "../pages/home/home";
 import {DomainPage} from "../pages/domain/domain";
@@ -11,6 +12,8 @@ import {Storage} from "@ionic/storage";
 import {GlobalProvider} from "../providers/global/global";
 import {ApprovedTrainings} from "../pages/approved-trainings/approved-trainings";
 import {CompletedAssessments} from "../pages/completed-assessments/completed-assessments";
+import {CompletedTrainings} from "../pages/completed-trainings/completed-trainings";
+import {Profile} from "../pages/profile/profile";
 
 @Component({
     templateUrl: 'app.html'
@@ -20,16 +23,19 @@ export class MyApp {
 
     rootPage: any = DomainPage;
 
-    pages: Array<{title: string, component: any}>;
+    pages: Array<{ title: string, component: any }>;
 
-    constructor(public platform: Platform, public statusBar: StatusBar, public LocalStorage: Storage,public splashScreen: SplashScreen, public global: GlobalProvider) {
+    constructor(public platform: Platform, public statusBar: StatusBar, public keyboard: Keyboard, public LocalStorage: Storage, public splashScreen: SplashScreen, public global: GlobalProvider) {
         this.initializeApp();
         // used for an example of ngFor and navigation
+        keyboard.disableScroll(true);
         this.pages = [
             {title: 'Home', component: HomePage},
             {title: 'Pending Approvals', component: PendingApprovals},
             {title: 'Approved Trainings', component: ApprovedTrainings},
+            {title: 'Completed Trainings', component: CompletedTrainings},
             {title: 'Completed Assessments', component: CompletedAssessments},
+            {title: 'Profile', component: Profile},
             {title: 'Logout', component: LogoutPage}
         ];
 

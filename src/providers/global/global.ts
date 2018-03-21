@@ -12,7 +12,9 @@ export class GlobalProvider {
     public user_email: string;
     public assessment_id;
     public training_id;
+    public feedback_id;
     public assessment;
+    public feedback;
 
     constructor() {
 

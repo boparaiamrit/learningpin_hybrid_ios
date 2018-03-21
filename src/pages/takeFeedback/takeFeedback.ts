@@ -6,17 +6,15 @@ import {Storage} from "@ionic/storage";
 import {LoginPage} from "../login/login";
 import {GlobalProvider} from "../../providers/global/global";
 import {HomePage} from "../home/home";
-import moment from 'moment';
-import {RoundProgressModule, RoundProgressConfig} from 'angular-svg-round-progressbar';
 
 @Component({
     selector: 'page-login',
-    templateUrl: 'takeAssessment.html',
+    templateUrl: 'takeFeedback.html',
     styleUrls: ['assets/main.css'],
 })
-export class takeAssessment {
+export class takeFeedback {
     domain = "";
-    assessment = [];
+    feedback = [];
     total_questions;
     count: number;
     answers = [];
@@ -27,15 +25,13 @@ export class takeAssessment {
     option2;
     option3;
     option4;
+    option5;
     selectedItem = 0;
     answerSelected = false;
     error: boolean = false;
-    mytimeout = null; // the current timeoutID
-    timer;
-    current_timer;
     alert = this.alertCtrl.create({
         title: '',
-        message: 'Are you sure you wanna cancel this test ? All progress will be lost.',
+        message: 'Are you sure you wanna cancel this feedback ? All progress will be lost.',
         buttons: [
             {
                 text: 'No',
@@ -47,44 +43,23 @@ export class takeAssessment {
             {
                 text: 'Yes',
                 handler: () => {
-                    this.app.getRootNav().pop(takeAssessment);
+                    this.app.getRootNav().pop(takeFeedback);
                 }
             }
         ]
     });
 
-    constructor(private afAuth: AngularFireAuth, private http: Http, private app: App, public starter: RoundProgressModule, public global: GlobalProvider, public platform: Platform, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
-        this.questions = global.assessment.questions;
+    constructor(private afAuth: AngularFireAuth, private http: Http, private app: App, public global: GlobalProvider, public platform: Platform, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+        this.questions = global.feedback.questions;
         this.total_questions = this.questions.length;
         if (this.total_questions > 1) {
             this.count = 0;
-            this.timer = global.assessment.time_in_sec;
-            this.current_timer = this.timer;
             this.getQuestion(this.count);
         }
 
-        if (this.timer != null) {
-            this.timeout();
-        }
-
         platform.registerBackButtonAction(() => {
-            // this.app.getRootNav().pop(takeAssessment);
             this.alert.present();
-
         }, 1);
-    }
-
-    timeout() {
-        setTimeout(() => {
-            if (this.current_timer === 0) {
-                this.finishAssessment(this.global.assessment_id, this.global.training_id);
-                return;
-            }
-            this.current_timer--;
-            setTimeout(() => {
-                this.timeout();
-            }, 1000);
-        }, 1000);
     }
 
 
@@ -107,6 +82,7 @@ export class takeAssessment {
         this.option2 = this.questions[counter].choiceb;
         this.option3 = this.questions[counter].choicec;
         this.option4 = this.questions[counter].choiced;
+        this.option5 = this.questions[counter].choicee;
     }
 
     selectOption(optionNumber, questionID, answer) {
@@ -119,7 +95,7 @@ export class takeAssessment {
         console.log(this.answers);
     }
 
-    finishAssessment(assessment_id, training_id) {
+    finishFeedback(feedback_id, training_id) {
         var options;
         let loading = this.loadingCtrl.create({
             content: 'Please wait...'
@@ -129,15 +105,15 @@ export class takeAssessment {
             this.LocalStorage.get('user').then((user) => {
                 let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
                 options = new RequestOptions({headers: headers});
-                var link = domain + '/api/assessments/' + assessment_id;
-                var mydata = {training_id: training_id, answers: this.answers};
+                var link = domain + '/api/feedbacks/' + feedback_id;
+                var mydata = {training_id: training_id, answers: JSON.stringify(this.answers)};
                 this.http.post(link, mydata, options)
                     .subscribe(data => {
                         loading.dismiss();
                         var response = data.json();
                         if (response.success) {
                             this.Toast.create({
-                                message: "Assessment completed successfully.",
+                                message: "Feedback completed successfully.",
                                 duration: 3000,
                                 position: 'middle'
                             }).present();
@@ -156,23 +132,4 @@ export class takeAssessment {
         });
     }
 
-    public humanizeDurationTimer = function (input, units) {
-        // units is a string with possible values of y, M, w, d, h, m, s, ms
-        if (input == 0) {
-            return 0;
-        } else {
-            var duration = moment().startOf('day').add(input, units);
-            var format = "";
-            if (duration.hour() > 0) {
-                format += "H[h] ";
-            }
-            if (duration.minute() > 0) {
-                format += "m[m] ";
-            }
-            if (duration.second() > 0) {
-                format += "s[s] ";
-            }
-            return duration.format(format);
-        }
-    };
 }

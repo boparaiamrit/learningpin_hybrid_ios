@@ -1,0 +1,61 @@
+<style>
+    .profile-page {
+        padding: 70px 0 0 0;
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+</style>
+<div class="profile-page">
+    <ion-header no-border>
+        <ion-navbar color="yellow" hideBackButton="false">
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>Profile</ion-title>
+        </ion-navbar>
+    </ion-header>
+    <ion-content>
+        <ion-scroll scrollY="true" style="height:100%;">
+            <div class="section">
+                <h5 class="name">{{global.user_name}}</h5>
+                <h6 class="useremail">{{global.user_email}}</h6>
+                <div class="profile-section">
+                    <div class="profile-form">
+                        <ion-item>
+                            <ion-label floating>User Name</ion-label>
+                            <ion-input type="text" [(ngModel)]="name"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>Email</ion-label>
+                            <ion-input type="email" [(ngModel)]="email"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>Password</ion-label>
+                            <ion-input type="password" [(ngModel)]="password"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>State</ion-label>
+                            <ion-select #state_select [(ngModel)]="user_state" (ionChange)="getCities(state_select.value)">
+                                <ion-option *ngFor="let state of states" [value]="state.id" >
+                                    {{state.name}}
+                                </ion-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label floating>City</ion-label>
+                            <ion-select [(ngModel)]="user_city">
+                                <ion-option *ngFor="let city of cities" [value]="city.id" >
+                                    {{city.name}}
+                                </ion-option>
+                            </ion-select>
+                        </ion-item>
+                        <button ion-button class="update-btn" (click)="updateProfile()">
+                            Update Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ion-scroll>
+    </ion-content>
+</div>

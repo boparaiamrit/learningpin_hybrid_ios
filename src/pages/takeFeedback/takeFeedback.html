@@ -1,0 +1,49 @@
+<style>
+    .take-feedback-page {
+        padding: 70px 0 20px 0;
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+    .feedback-action-btn {
+        width: 50% !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+</style>
+<div class="take-feedback-page">
+    <ion-header no-border>
+        <ion-navbar color="yellow" hideBackButton="false">
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>Feedback</ion-title>
+        </ion-navbar>
+    </ion-header>
+    <div style="padding: 0 20px">
+        <h5 class="text-center bold">{{question}}</h5>
+        <p class="option" [class.active]="selectedItem == 1" (click)="selectOption(1,question_id,'a')">
+            {{option1}}</p>
+        <p class="option" [class.active]="selectedItem == 2" (click)="selectOption(2,question_id,'b')">
+            {{option2}}</p>
+        <p class="option" [class.active]="selectedItem == 3" (click)="selectOption(3,question_id,'c')">
+            {{option3}}</p>
+        <p class="option" [class.active]="selectedItem == 4" (click)="selectOption(4,question_id,'d')">
+            {{option4}}</p>
+        <p class="option" [class.active]="selectedItem == 5" (click)="selectOption(5,question_id,'e')">
+            {{option5}}</p>
+    </div>
+    <div class="flex space-between feedback-action-btns">
+        <button ion-button color="light-yellow" class="feedback-action-btn"
+                (click)="nextQuestion()">
+            Next Question
+        </button>
+        <button ion-button color="yellow" class="feedback-action-btn"
+                (click)="finishFeedback(global.feedback_id,global.training_id)">
+            Finish Test
+        </button>
+    </div>
+
+</div>

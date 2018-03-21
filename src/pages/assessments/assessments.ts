@@ -32,7 +32,6 @@ export class AssessmentsPage {
                 var options = new RequestOptions({headers: headers});
                 var link = domain + '/api/assessments';
                 this.http.get(link, options).subscribe(data => {
-                    // this.navCtrl.push(HomePage);
                     loading.dismiss();
                     this.assessments = data.json().assessments;
                     console.log(this.assessments);

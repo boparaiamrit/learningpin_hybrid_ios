@@ -1,69 +1,9 @@
 <style>
     .take-assessment-page {
-        padding: 70px 0 20px 0;
+        padding: 55px 0 45px 0;
         height: 100%;
         width: 100%;
         font-size: 16px;
-    }
-
-    .logo {
-        width: 150px;
-        height: 115px;
-        margin-bottom: 110px;
-    }
-
-    .flex {
-        display: flex;
-    }
-
-    .justify-center {
-        justify-content: center;
-    }
-
-    .login-btn {
-        width: 100%;
-        background: #ffffff;
-        border-radius: 50px;
-        font-weight: 600;
-        padding: 12px;
-        font-size: 14px;
-        color: #b765d3;
-        margin-top: 30px;
-    }
-
-    .form .item-md {
-        background: transparent;
-        color: #ffffff;
-        padding-left: 0;
-    }
-
-    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
-        color: #ffffff;
-    }
-
-    .form {
-        padding: 0 20px;
-    }
-
-    .domain-form.list-md .item-block .item-inner {
-        border-bottom: 2px solid red !important;
-    }
-
-    .domain-field {
-        width: 150px !important;
-        font-size: 16px;
-        font-weight: 600;
-    }
-
-    .domain-block {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-    }
-
-    .domain-block h4 {
-        margin: 0;
-        color: #ffffff;
     }
 
     .assessment-action-btn {
@@ -83,17 +23,25 @@
             <ion-title>Assessment</ion-title>
         </ion-navbar>
     </ion-header>
-    <div style="padding: 0 20px">
-        <h5 class="text-center bold">{{question}}</h5>
-        <p class="option" [class.active]="selectedItem == 1" (click)="selectOption(1,question_id,'a')">
-            {{option1}}</p>
-        <p class="option" [class.active]="selectedItem == 2" (click)="selectOption(2,question_id,'b')">
-            {{option2}}</p>
-        <p class="option" [class.active]="selectedItem == 3" (click)="selectOption(3,question_id,'c')">
-            {{option3}}</p>
-        <p class="option" [class.active]="selectedItem == 4" (click)="selectOption(4,question_id,'d')">
-            {{option4}}</p>
-    </div>
+    <ion-scroll scrollY="true" style="height:100%;">
+        <div class="progress-wrapper" *ngIf="timer != null">
+            <div class="progress">
+                {{humanizeDurationTimer(current_timer,'s')}}
+            </div>
+            <round-progress [current]=current_timer [max]=timer color='#f5a623'></round-progress>
+        </div>
+        <div style="padding: 0 20px">
+            <h5 class="text-center bold">{{question}}</h5>
+            <p class="option" [class.active]="selectedItem == 1" (click)="selectOption(1,question_id,'a')">
+                {{option1}}</p>
+            <p class="option" [class.active]="selectedItem == 2" (click)="selectOption(2,question_id,'b')">
+                {{option2}}</p>
+            <p class="option" [class.active]="selectedItem == 3" (click)="selectOption(3,question_id,'c')">
+                {{option3}}</p>
+            <p class="option" [class.active]="selectedItem == 4" (click)="selectOption(4,question_id,'d')">
+                {{option4}}</p>
+        </div>
+    </ion-scroll>
     <div class="flex space-between assessment-action-btns">
         <button ion-button color="light-yellow" class="assessment-action-btn"
                 (click)="nextQuestion()">

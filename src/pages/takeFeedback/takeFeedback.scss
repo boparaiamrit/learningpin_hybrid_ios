@@ -1,0 +1,58 @@
+page-home {
+
+}
+
+ion-card {
+  border-left: 4px solid #ffcd00;
+  border-radius: 4px;
+  width: 100% !important;
+  margin: 0 0 15px 0 !important;
+}
+
+.attempt-button {
+  margin: 0 !important;
+}
+
+.training-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert-head {
+  padding: 0 !important;
+}
+
+.training-popup-card h5 {
+  color: #000000;
+}
+
+.take-feedback-page .option {
+  border-bottom: 1px solid #000000;
+  padding: 10px;
+  text-align: center;
+
+}
+
+.take-feedback-page .option.active {
+  background: #f5a623;
+  color: #ffffff;
+}
+
+.take-feedback-page .feedback-action-btns {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.alert-md .alert-message, .alert-md .alert-input-group {
+  padding: 10px 20px 0 20px !important;
+}
+
+.alert-md .alert-button {
+  width: auto !important;
+  background: transparent;
+  margin: 0 0 0 10px !important;
+  color: #ffcd00;
+}
+
