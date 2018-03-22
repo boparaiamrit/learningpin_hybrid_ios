@@ -78,11 +78,15 @@
 
                         </div>
                         <div class="learning-data">
-                            <h4>{{ learning.title }}</h4>
-                            <p class="time">{{learning.description}}</p>
+                            <h4>{{ learning.video_name }}</h4>
+                            <p class="time">{{learning.title}}</p>
                             <div>
-                                <button ion-button color="yellow" (click)='download(learning.video)'>Download</button>
-                                <button ion-button color="primary" (click)='play(learning.video)'>Play</button>
+                                <button ion-button color="yellow"
+                                        (click)='download(learning.video,learning.video_name,learning.id)'>Download
+                                </button>
+                                <button ion-button color="primary" (click)='play(learning.video_name,learning.video)'>
+                                    Play
+                                </button>
                             </div>
                         </div>
                     </div>

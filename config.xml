@@ -94,4 +94,6 @@
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.4" />
     <allow-navigation href="http://10.0.1.39:8100" />
+    <allow-navigation href="http://10.0.1.39:8101" />
+    <plugin name="cordova-plugin-file-opener2" spec="^2.0.19" />
 </widget>

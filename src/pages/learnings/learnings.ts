@@ -18,8 +18,8 @@ export class LearningsPage {
     domain = "";
     mylearnings = [];
     error: boolean = false;
-     fileExist = false;
-     downloading = false;
+    fileExist = false;
+    downloading = false;
 
     constructor(private afAuth: AngularFireAuth, private http: Http, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private streamingMedia: StreamingMedia, public platform: Platform, private transfer: FileTransfer, private file: File, private localNotifications: LocalNotifications,) {
         this.learnings();
@@ -28,32 +28,35 @@ export class LearningsPage {
 
     public learnings() {
         this.LocalStorage.get('domain').then((domain) => {
-        this.LocalStorage.get('user').then((user) => {
-            let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
-            var options = new RequestOptions({headers: headers});
-            var link = domain +'/api/learnings';
-            this.http.get(link, options).subscribe(data => {
-                // this.navCtrl.push(HomePage);
-                this.mylearnings = data.json().learnings;
-            }, error => {
-                this.Toast.create({
-                    message: 'Please login to proceed!',
-                    duration: 2000,
-                    position: 'bottom'
-                }).present();
+            this.LocalStorage.get('user').then((user) => {
+                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                var options = new RequestOptions({headers: headers});
+                var link = domain + '/api/learnings';
+                this.http.get(link, options).subscribe(data => {
+                    // this.navCtrl.push(HomePage);
+                    this.mylearnings = data.json().learnings;
+                }, error => {
+                    this.Toast.create({
+                        message: 'Please login to proceed!',
+                        duration: 2000,
+                        position: 'bottom'
+                    }).present();
+                });
             });
-        });
         });
     }
 
-    public download(url, name = "aa.mp4", file_id = 1) {
+    public download(url, name, file_id) {
         const fileTransfer: FileTransferObject = this.transfer.create();
-        console.log(this.file.externalDataDirectory + name);
         this.file.checkFile(this.file.externalDataDirectory, name).then(
             (result) => {
-                console.log("checkfile called");
-                if(result) {
-                    console.log("files check "+result);
+                if (this.downloading) {
+                    this.Toast.create({
+                        message: 'Downloading is already in progress.',
+                        duration: 1000,
+                        position: 'bottom'
+                    }).present();
+                } else {
                     console.log("files found");
                     this.Toast.create({
                         message: 'File already exists.',
@@ -65,80 +68,73 @@ export class LearningsPage {
             }
         ).catch(
             (err) => {
-                console.log("files not found ")
-            }
-        );
-        console.log("fileExist: "+this.fileExist);
-        if (!this.fileExist) {
-            console.log("fileExist if condition: ");
-            this.localNotifications.isPresent(file_id).then(
-                (result) => {
-                    console.log(result);
-                    if(result){
-                    console.log("Downloading is already in progress.");
+                console.log("files not found ");
+                if (this.downloading) {
                     this.Toast.create({
                         message: 'Downloading is already in progress.',
                         duration: 1000,
                         position: 'bottom'
                     }).present();
-                    this.downloading = true;
-                    }
                 }
-            ).catch(
-                (err) => {
-                    console.log("something went wrong.")
+                else {
+                    console.log(file_id);
+                    this.localNotifications.schedule({
+                        id: file_id,
+                        title: name,
+                        text: 'Downloading...',
+                    });
+                    this.Toast.create({
+                        message: "Downloading...",
+                        duration: 700,
+                        position: 'middle'
+                    }).present();
+
+                    console.log(this.file.externalDataDirectory + name);
+                    console.log(url);
+
+                    fileTransfer.download(url, this.file.externalDataDirectory + name).then((entry) => {
+                        this.localNotifications.clear(file_id);
+                        this.Toast.create({
+                            message: 'Download Completed.',
+                            duration: 1000,
+                            position: 'bottom'
+                        }).present();
+                        this.downloading = false;
+                        console.log('download complete: ' + entry.toURL());
+                    }, (error) => {
+                        console.log(error);
+                        this.Toast.create({
+                            message: 'Oops! Something went wrong. Try again later.',
+                            duration: 1000,
+                            position: 'bottom'
+                        }).present();
+                    });
+
+                    fileTransfer.onProgress((progressEvent) => {
+                        this.downloading = true;
+                        if (progressEvent.lengthComputable) {
+                            var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+                            console.log(perc);
+                        } else {
+
+                        }
+                    });
                 }
-            );
-
-            if (!this.downloading) {
-                this.localNotifications.schedule({
-                    id: file_id,
-                    title: name,
-                    text: 'Downloading...',
-                });
-                this.Toast.create({
-                            message:"Downloading...",
-                            duration:700,
-                            position:'middle'
-                }).present();
-
-
-                fileTransfer.download(url, this.file.externalDataDirectory + name).then((entry) => {
-                    this.localNotifications.clear(file_id);
-                    this.Toast.create({
-                        message: 'Download Completed.',
-                        duration: 1000,
-                        position: 'bottom'
-                    }).present();
-                    console.log('download complete: ' + entry.toURL());
-                }, (error) => {
-                    this.Toast.create({
-                        message: 'Oops! Something went wrong. Try again later.',
-                        duration: 1000,
-                        position: 'bottom'
-                    }).present();
-                });
             }
-        }
+        )
     }
 
-    public play(video_url) {
+    public play(name, video_url) {
         let options: StreamingVideoOptions = {
-            successCallback: () => {
-                this.platform.registerBackButtonAction(() => {
-                    alert(1212);
-                    this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
-                }, 1);
-            },
-            errorCallback: (e) => {
-                alert(1212);
-                this.platform.registerBackButtonAction(() => {
-                    this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
-                }, 1);
-            },
             orientation: 'landscape',
         };
-
-        this.streamingMedia.playVideo(video_url, options);
+        this.file.checkFile(this.file.externalDataDirectory, name).then(
+            (result) => {
+                this.streamingMedia.playVideo(this.file.externalDataDirectory + name, options);
+            }
+        ).catch(
+            (err) => {
+                this.streamingMedia.playVideo(video_url, options);
+            })
     }
 }
