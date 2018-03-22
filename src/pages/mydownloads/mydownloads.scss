@@ -1,0 +1,130 @@
+page-home {
+
+}
+
+ion-card {
+  border-left: 4px solid #ffcd00;
+  border-radius: 4px;
+  width: 100% !important;
+  margin: 0 0 15px 0 !important;
+}
+
+.learning-card {
+  display: flex;
+}
+
+.learning-card .image {
+  width: 100px;
+  height: auto;
+}
+
+.alert-head {
+  padding: 0 !important;
+}
+
+.training-popup-card h5 {
+  color: #000000;
+}
+
+.time {
+  font-size: 10px !important;
+  color: #bababa !important;
+  margin: 0;
+}
+
+.training {
+  font-size: 14px !important;
+  color: #bababa !important;
+  font-weight: 300;
+  margin: 0;
+}
+
+.email {
+  font-size: 11px !important;
+  color: #bababa !important;
+  font-weight: 300 !important;
+  margin: 0;
+}
+
+.date {
+  font-size: 12px !important;
+  color: #ffcd00 !important;
+  font-weight: 600;
+  margin: 0;
+}
+
+.alert-md .alert-message, .alert-md .alert-input-group {
+  padding: 0 20px !important;
+}
+
+.alert-md .alert-button {
+  width: 100%;
+  background: #ffcd00;
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.alert-button-group {
+  padding: 10px 20px !important;
+}
+
+.alert-md .alert-button .button-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.learning-card .learning-data {
+  padding: 20px;
+}
+
+.card-content-md{
+  padding:12px 8px !important;
+}
+
+.icon.icon-md.ion-md-checkmark{
+  padding: 4px !important;
+  border-radius: 5px !important;
+  margin-right: 6px !important;
+  background-color: #ffffff !important;
+  color:#518aff !important;
+  box-shadow: 0 1px 3px 0 #9b9b9b;
+}
+.icon.icon-md.ion-md-close{
+  padding: 4px 6px !important;
+  border-radius: 5px !important;
+  margin-right: 6px !important;
+  background-color: #ffffff !important;
+  color:#ff1744 !important;
+  box-shadow: 0 1px 3px 0 #9b9b9b;
+}
+
+.pending-assessment-page .scroll-content,.pending-assessment-page .fixed-content{
+margin-top: 0!important;
+}
+
+
+.pending-assessment-page .scroll-content{
+padding: 2px !important;
+}
+
+.pending-assessment-page .card-md{
+  box-shadow: 1px 0px 4px 0 rgba(0, 0, 0, 0.16) !important;
+}
+
+
+.pending-assessment-page .approve-all{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+
+.pending-assessment-page .approve-all .ion-md-checkmark{
+ margin-right: 0 !important;
+ margin-left: 10px !important;
+}
+
+

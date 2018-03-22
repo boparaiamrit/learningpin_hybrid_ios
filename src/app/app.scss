@@ -16,10 +16,25 @@
 
 .hide-card {
   -webkit-box-shadow: none !important;
-  padding: 20px 0 10px 0;
-  background: #f5a623;
+  padding: 10px 0;
+  background: #eef1f5;
   border-left: 0 !important;
   margin-bottom: 0 !important;
+}
+
+.hide-card .menu-user-header {
+  display: flex;
+  align-items: center;
+}
+
+.hide-card .menu-user-detail {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.hide-card .menu-user-detail h2, .hide-card .menu-user-detail p {
+  margin: 0;
 }
 
 .hide-card p {
@@ -35,21 +50,27 @@
 }
 
 .custom-avatar {
-  height: 15vw;
-  width: 15vw;
+  height: 12vw;
+  width: 12vw;
   border-radius: 50%;
   display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 11px;
 }
 
 .menu-items button {
-  padding-left: 0 !important;
+  padding-left: 12px !important;
 }
 
 .menu-items button .item-inner {
-  padding-left: 15px !important;
+  padding-left: 0 !important;
   font-size: 1.5rem !important;
+  color: #727272;
+  font-weight: 300;
+  border-bottom: 1px solid #dedede;
+}
+
+.menu-items button:last-child .item-inner {
+  border-bottom: 1px solid #dedede !important;
 }
 
 .menu-items button .item-inner .label-md {

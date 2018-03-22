@@ -36,6 +36,7 @@ import {CompletedTrainings} from "../pages/completed-trainings/completed-trainin
 import {takeFeedback} from "../pages/takeFeedback/takeFeedback";
 import {Profile} from "../pages/profile/profile";
 import {RoundProgressModule, RoundProgressConfig} from 'angular-svg-round-progressbar';
+import {Mydownloads} from "../pages/mydownloads/mydownloads";
 
 @NgModule({
     declarations: [
@@ -56,6 +57,7 @@ import {RoundProgressModule, RoundProgressConfig} from 'angular-svg-round-progre
         CompletedTrainings,
         takeFeedback,
         Profile,
+        Mydownloads,
     ],
     imports: [
         BrowserModule,
@@ -110,6 +112,7 @@ import {RoundProgressModule, RoundProgressConfig} from 'angular-svg-round-progre
         CompletedTrainings,
         takeFeedback,
         Profile,
+        Mydownloads,
     ],
     providers: [
         StatusBar,

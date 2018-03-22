@@ -14,6 +14,7 @@ import {ApprovedTrainings} from "../pages/approved-trainings/approved-trainings"
 import {CompletedAssessments} from "../pages/completed-assessments/completed-assessments";
 import {CompletedTrainings} from "../pages/completed-trainings/completed-trainings";
 import {Profile} from "../pages/profile/profile";
+import {Mydownloads} from "../pages/mydownloads/mydownloads";
 
 @Component({
     templateUrl: 'app.html'
@@ -36,6 +37,7 @@ export class MyApp {
             {title: 'Completed Trainings', component: CompletedTrainings},
             {title: 'Completed Assessments', component: CompletedAssessments},
             {title: 'Profile', component: Profile},
+            {title: 'Downloads', component: Mydownloads},
             {title: 'Logout', component: LogoutPage}
         ];
 

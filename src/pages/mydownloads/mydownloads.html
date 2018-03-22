@@ -1,30 +1,32 @@
 <style>
-    .learning-page {
-        padding: 10px 0 70px 0;
+    .mydownloads-page {
+        padding: 80px 20px 20px 20px;
         height: 100%;
         width: 100%;
         font-size: 16px;
     }
-
 </style>
-<div class="learning-page">
+<div class="mydownloads-page">
+    <ion-header no-border>
+        <ion-navbar color="yellow" hideBackButton="true">
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>Downloads</ion-title>
+        </ion-navbar>
+    </ion-header>
     <ion-scroll scrollY="true" style="height:100%;">
-        <div class="" *ngFor="let learning of mylearnings; let i = index">
+        <div class="" *ngFor="let myfile of files; let i = index">
             <ion-card>
                 <ion-card-content>
                     <div class="learning-card">
                         <div class="image"
                              style="background: url('assets/imgs/teacher_training.png');background-size: cover">
-
                         </div>
                         <div class="learning-data">
-                            <h4>{{ learning.video_name }}</h4>
-                            <p class="time">{{learning.title}}</p>
+                            <h4>{{ myfile.name }}</h4>
                             <div>
-                                <button ion-button color="yellow"
-                                        (click)='download(learning.video,learning.video_name,learning.id)'>Download
-                                </button>
-                                <button ion-button color="primary" (click)='play(learning.video_name,learning.video)'>
+                                <button ion-button color="primary" (click)='play(myfile.name,myfile.nativeURL)'>
                                     Play
                                 </button>
                             </div>
