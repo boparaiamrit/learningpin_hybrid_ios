@@ -23,10 +23,9 @@ export class LoginPage {
         }, 1);
     }wa
 
-    async login() {
-        let loading = this.loadingCtrl.create({
-            content: 'Please wait...'
-        });
+    async login() {let loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+    });
 
         loading.present();
         this.LocalStorage.get('domain').then((domain) => {
@@ -51,5 +50,6 @@ export class LoginPage {
                     // this.error = true;
                 });
         });
+
     }
 }

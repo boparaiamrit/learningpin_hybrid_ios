@@ -1,0 +1,43 @@
+.idp-page .color-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.idp-page .color-indicators .indication-block {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.idp-page .color-indicators .indication-block p {
+  font-size: 1.4rem;
+  margin: 0 0 0 5px;
+}
+
+.idp-page .color-indicators .indication-block .color-block {
+  height: 20px;
+  width: 50px;
+}
+
+.color-block.green {
+  background: #1fc178;
+  border: 1px solid #008033;
+}
+
+.color-block.red {
+  background: #dc1b16;
+  border: 1px solid #9a1810;
+}
+
+.color-block.yellow {
+  background: #ffca2c;
+  border: 1px solid #fab526;
+}
+
+.idp-page .chart-div a {
+  display: none !important;
+}
+.idp-page .charts-block {
+  display: initial !important;
+}

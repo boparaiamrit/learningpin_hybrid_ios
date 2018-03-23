@@ -1,0 +1,38 @@
+<style>
+    .idp-page {
+        padding: 80px 20px 20px 20px;
+        height: 100%;
+        width: 100%;
+        font-size: 16px;
+    }
+</style>
+<div class="idp-page">
+    <ion-header no-border>
+        <ion-navbar color="yellow" hideBackButton="true">
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>IDP</ion-title>
+        </ion-navbar>
+    </ion-header>
+    <div class="color-indicators">
+        <div class="indication-block">
+            <div class="color-block green"></div>
+            <p>Completed</p>
+        </div>
+        <div class="indication-block">
+            <div class="color-block yellow"></div>
+            <p>Assigned & Started</p>
+        </div>
+        <div class="indication-block">
+            <div class="color-block red"></div>
+            <p>Not Started</p>
+        </div>
+    </div>
+    <div class="charts-block">
+        <ion-scroll scrollY="true" style="height:100%;">
+            <div class="chart-div" id="trainings_chart" [style.width.%]="100" [style.height.px]="300"></div>
+            <div class="chart-div" id="assessments_chart" [style.width.%]="100" [style.height.px]="300"></div>
+        </ion-scroll>
+    </div>
+</div>

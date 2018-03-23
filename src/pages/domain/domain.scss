@@ -1,23 +1,61 @@
 page-home {
 
 }
-.domain-block h4{
-  border-bottom: 1px solid #dedede;
+
+.domain-block h4 {
+  border-bottom: 2px solid #ffffff;
 }
 
-.domain-block .domain-field.input-has-focus{
-  border-bottom: 1px solid #dedede !important;
+.domain-block .domain-field.input-has-focus {
+  border-bottom: 2px solid #ffffff !important;
 }
 
-.domain-block .domain-field.input-has-focus .item-inner{
+.domain-block .domain-field.input-has-focus .item-inner {
   border-bottom: 0 !important;
   box-shadow: 0 0 0 0 !important;
 }
+
+.domain-block .domain-field .item-inner {
+  border-bottom: 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
 //domain-field item item-block item-md item-input item-label-floating ng-pristine ng-valid ng-touched item-has-input item-has-focus input-has-focus
-.domain-block .text-input-md{
+.domain-block .text-input-md {
   text-align: right;
   font-weight: 400 !important;
   margin-bottom: 0;
   font-size: 2rem;
 }
 
+.domain-field {
+  width: 150px !important;
+  font-size: 16px;
+  font-weight: 600;
+  background: transparent !important;
+  border-bottom: 2px solid #ffffff !important;
+  color: #ffffff !important;
+  padding-left: 0 !important;
+}
+
+.domain-block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.domain-block h4 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.domain-block ion-label{
+ margin-bottom: 3px !important;
+}
+
+.text-input {
+  font-size: 2rem;
+  width: 100% !important;
+  margin: 0 !important;
+  font-weight: 500;
+}

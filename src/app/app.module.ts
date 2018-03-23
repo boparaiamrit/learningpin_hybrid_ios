@@ -37,6 +37,8 @@ import {takeFeedback} from "../pages/takeFeedback/takeFeedback";
 import {Profile} from "../pages/profile/profile";
 import {RoundProgressModule, RoundProgressConfig} from 'angular-svg-round-progressbar';
 import {Mydownloads} from "../pages/mydownloads/mydownloads";
+import {IDP} from "../pages/idp/idp";
+import { AmChartsModule } from "@amcharts/amcharts3-angular";
 
 @NgModule({
     declarations: [
@@ -58,6 +60,7 @@ import {Mydownloads} from "../pages/mydownloads/mydownloads";
         takeFeedback,
         Profile,
         Mydownloads,
+        IDP,
     ],
     imports: [
         BrowserModule,
@@ -67,6 +70,7 @@ import {Mydownloads} from "../pages/mydownloads/mydownloads";
         AngularFireDatabaseModule,
         IonicStorageModule.forRoot(),
         RoundProgressModule,
+        AmChartsModule,
         IonicModule.forRoot(MyApp
             /*
              * MODIFY BOOTSTRAP CODE BELOW
@@ -113,6 +117,7 @@ import {Mydownloads} from "../pages/mydownloads/mydownloads";
         takeFeedback,
         Profile,
         Mydownloads,
+        IDP,
     ],
     providers: [
         StatusBar,
