@@ -38,7 +38,8 @@ import {Profile} from "../pages/profile/profile";
 import {RoundProgressModule, RoundProgressConfig} from 'angular-svg-round-progressbar';
 import {Mydownloads} from "../pages/mydownloads/mydownloads";
 import {IDP} from "../pages/idp/idp";
-import { AmChartsModule } from "@amcharts/amcharts3-angular";
+import {AmChartsModule} from "@amcharts/amcharts3-angular";
+import {ForgotPassword} from "../pages/forgot-password/forgot-password";
 
 @NgModule({
     declarations: [
@@ -61,6 +62,7 @@ import { AmChartsModule } from "@amcharts/amcharts3-angular";
         Profile,
         Mydownloads,
         IDP,
+        ForgotPassword,
     ],
     imports: [
         BrowserModule,
@@ -118,6 +120,7 @@ import { AmChartsModule } from "@amcharts/amcharts3-angular";
         Profile,
         Mydownloads,
         IDP,
+        ForgotPassword,
     ],
     providers: [
         StatusBar,

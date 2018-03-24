@@ -1,11 +1,4 @@
 <style>
-    .main-page {
-        background: linear-gradient(to bottom, #4e3cf7, #c86dd7);
-        height: 100%;
-        width: 100%;
-        font-size: 16px;
-    }
-
     .logo {
         width: 150px;
         height: 115px;
@@ -20,17 +13,6 @@
         justify-content: center;
     }
 
-    .login-btn {
-        width: 100%;
-        background: #ffffff;
-        border-radius: 50px;
-        font-weight: 600;
-        padding: 12px;
-        font-size: 14px;
-        color: #b765d3;
-        margin-top: 30px;
-    }
-
     .form .item-md {
         background: transparent;
         color: #ffffff;
@@ -42,7 +24,7 @@
     }
 
     .form {
-        padding: 0 20px;
+        padding: 0 30px;
     }
 
     .login-form.list-md .item-block .item-inner {
@@ -69,7 +51,8 @@
             <ion-label floating>Password</ion-label>
             <ion-input type="password" [(ngModel)]="password"></ion-input>
         </ion-item>
-        <div padding>
+        <p class="forgot-password" (click)='forgotPassword()' tappable>Forgot Password?</p>
+        <div>
             <button block class="login-btn" (click)='login()'>Log In</button>
         </div>
     </ion-list>

@@ -11,6 +11,10 @@ ion-header::after {
   background-image: none;
 }
 
+.tabs-md-white .tab-button .tab-button-text {
+  font-size: 1.6rem;
+}
+
 .tabs-md-white .tab-button, .tabs-md-white .tab-button .tab-button-icon {
   border-bottom: 3px solid tranparent;
   font-size: 14px;

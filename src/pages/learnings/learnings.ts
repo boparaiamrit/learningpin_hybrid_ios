@@ -8,6 +8,7 @@ import {HomePage} from "../home/home";
 import {FileTransfer, FileTransferObject} from "@ionic-native/file-transfer";
 import {File} from "@ionic-native/file";
 import {LocalNotifications} from "@ionic-native/local-notifications";
+import {GlobalProvider} from "../../providers/global/global";
 
 @Component({
     selector: 'page-login',
@@ -21,7 +22,8 @@ export class LearningsPage {
     fileExist = false;
     downloading = false;
 
-    constructor(private afAuth: AngularFireAuth, private http: Http, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private streamingMedia: StreamingMedia, public platform: Platform, private transfer: FileTransfer, private file: File, private localNotifications: LocalNotifications,) {
+    constructor(private afAuth: AngularFireAuth, private http: Http, public global: GlobalProvider, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private streamingMedia: StreamingMedia, public platform: Platform, private transfer: FileTransfer, private file: File, private localNotifications: LocalNotifications,) {
+        this.global.home_page_name = "Learning";
         this.learnings();
     }
 

@@ -101,8 +101,15 @@ export class MyTrainingPage {
     presentConfirm(name, time, date, id) {
         let alert = this.alertCtrl.create({
             title: '',
-            message: '<div class="training-card training-popup-card"><div><h5>' + name + '</h5><p class="time">' + time + '</p></div><div><p class="date">' + date + '</p></div></div>',
+            message: '<div class="training-card training-popup-card"><div><h4>' + name + '</h4><p class="date">' + date + '</p><p class="time">' + time + '</p></div></div>',
             buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: () => {
+
+                    }
+                },
                 {
                     text: 'Enroll Now',
                     handler: () => {

@@ -5,7 +5,8 @@ import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
 import {DomainPage} from "../domain/domain";
 import {HomePage} from "../home/home";
-import { GlobalProvider } from "../../providers/global/global";
+import {GlobalProvider} from "../../providers/global/global";
+import {ForgotPassword} from "../forgot-password/forgot-password";
 
 @Component({
     selector: 'page-login',
@@ -21,11 +22,14 @@ export class LoginPage {
         platform.registerBackButtonAction(() => {
             this.navCtrl.setRoot(DomainPage, {}, {animate: true, direction: "forward"});
         }, 1);
-    }wa
+    }
 
-    async login() {let loading = this.loadingCtrl.create({
-        content: 'Please wait...'
-    });
+    wa
+
+    async login() {
+        let loading = this.loadingCtrl.create({
+            content: 'Please wait...'
+        });
 
         loading.present();
         this.LocalStorage.get('domain').then((domain) => {
@@ -33,11 +37,11 @@ export class LoginPage {
             var myData = "";
             this.http.post(link, myData)
                 .subscribe(data => {
-                    var user_data=data.json().user;
+                    var user_data = data.json().user;
                     this.LocalStorage.set('user', user_data);
 
-                    this.global.user_name=user_data.name;
-                    this.global.user_email=user_data.email;
+                    this.global.user_name = user_data.name;
+                    this.global.user_email = user_data.email;
                     loading.dismiss();
                     this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
                 }, error => {
@@ -51,5 +55,9 @@ export class LoginPage {
                 });
         });
 
+    }
+
+    forgotPassword() {
+        this.navCtrl.setRoot(ForgotPassword, {}, {animate: true, direction: "forward"});
     }
 }

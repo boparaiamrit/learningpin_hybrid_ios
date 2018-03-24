@@ -15,6 +15,22 @@ ion-card {
   align-items: center;
 }
 
+.training-popup-card {
+  justify-content: center !important;
+}
+
+.training-popup-card .date {
+  color: #000000 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  margin-bottom: 5px;
+}
+
+.training-popup-card .time {
+  color: #bababa !important;
+  font-weight: 400 !important;
+}
+
 .mytrainings-block {
   padding: 0 15px;
 }
@@ -32,8 +48,9 @@ ion-card {
   padding: 0 !important;
 }
 
-.training-popup-card h5 {
+.training-popup-card h4 {
   color: #000000;
+  margin-bottom: 5px;
 }
 
 .time {
@@ -43,7 +60,7 @@ ion-card {
 }
 
 .date {
-  font-size: 12px;
+  font-size: 14px;
   color: #ffcd00;
   font-weight: 600;
   margin: 0;
@@ -62,8 +79,12 @@ ion-card {
   font-weight: 600;
 }
 
-.alert-button-group {
-  padding: 10px 20px !important;
+.my-trainings-page .alert-button-group {
+  padding: 0 !important;
+}
+
+.alert-button-group button {
+  color: #f5a623 !important;
 }
 
 .alert-md .alert-button .button-inner {
@@ -115,6 +136,7 @@ ion-card {
 .my-trainings-page .scroll-content {
   padding: 0 !important;
 }
+
 .my-trainings-page ion-slide {
   padding: 0 !important;
 }

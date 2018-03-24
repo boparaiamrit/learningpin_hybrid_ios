@@ -17,7 +17,8 @@ export class AssessmentsPage {
     assessments = [];
     error: boolean = false;
 
-    constructor(private afAuth: AngularFireAuth, private http: Http, public global: GlobalProvider,private app: App, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    constructor(private afAuth: AngularFireAuth, private http: Http, public global: GlobalProvider, private app: App, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+        this.global.home_page_name = "Assessments";
         this.trainings();
     }
 
@@ -48,7 +49,7 @@ export class AssessmentsPage {
     }
 
 
-    public attemptAssessment(assessment_id,training_id) {
+    public attemptAssessment(assessment_id, training_id) {
         let loading = this.loadingCtrl.create({
             content: 'Please wait...'
         });
