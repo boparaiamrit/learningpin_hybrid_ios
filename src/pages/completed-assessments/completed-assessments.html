@@ -23,11 +23,11 @@
                         <div class="training-card">
                             <div class="full-width">
                                 <h4 class="yellow-font bold">{{ assessment.assessment_name }}</h4>
-                                <h4 *ngIf="assessment.training_id!=null; else noTraining">Training: <span class="bold">{{assessment.training_name}}</span>
-                                </h4>
+                                <p *ngIf="assessment.training_id!=null; else noTraining">Training: <span class="bold">{{assessment.training_name}}</span>
+                                </p>
                                 <ng-template #noTraining><h4>Training: <span class="bold">N.A.</span></h4></ng-template>
                                 <p>Time Limit: <span class="bold">{{assessment.time}}</span></p>
-                                <p>Total Number of Questions: <span classio="bold">{{assessment.no_of_questions}}</span>
+                                <p>Total Number of Questions: <span class="bold">{{assessment.no_of_questions}}</span>
                                 </p>
                                 <p>Maximum Marks: <span class="bold">{{assessment.max_marks}}</span></p>
                                 <p>Attempt: <span class="bold">{{assessment.attempt}}</span></p>

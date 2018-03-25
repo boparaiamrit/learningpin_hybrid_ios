@@ -18,6 +18,11 @@ page-home {
   border-top: 1px solid #dedfe4;
 }
 
+.profile-page .text-input {
+  font-size: 1.6rem;
+  font-weight: 400 !important;
+}
+
 .profile-page .scroll-content {
   margin-top: 0 !important;
 }
@@ -49,4 +54,14 @@ page-home {
   background-color: #ffffff;
   box-shadow: 0 2px 5px 0 #9b9b9b;
   margin-top: 30px;
+}
+
+.profile-page .profile-form ion-item{
+  margin-bottom: 10px;
+}
+
+.select-ios {
+  padding: 11px 8px 11px 0 !important;
+  width: 100%;
+  max-width: 100% !important;
 }

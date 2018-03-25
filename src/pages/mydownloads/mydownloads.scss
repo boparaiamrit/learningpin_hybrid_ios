@@ -3,7 +3,7 @@ page-home {
 }
 
 ion-card {
-  border-left: 4px solid #ffcd00;
+  border-left: 6px solid #f5a623;
   border-radius: 4px;
   width: 100% !important;
   margin: 0 0 15px 0 !important;
@@ -27,7 +27,7 @@ ion-card {
 }
 
 .time {
-  font-size: 10px !important;
+  font-size: 12px !important;
   color: #bababa !important;
   margin: 0;
 }
@@ -47,7 +47,7 @@ ion-card {
 }
 
 .date {
-  font-size: 12px !important;
+  font-size: 14px !important;
   color: #ffcd00 !important;
   font-weight: 600;
   margin: 0;
@@ -66,9 +66,7 @@ ion-card {
   font-weight: 600;
 }
 
-.alert-button-group {
-  padding: 10px 20px !important;
-}
+
 
 .alert-md .alert-button .button-inner {
   display: flex;

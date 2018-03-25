@@ -1,9 +1,18 @@
-page-home {
+mytrainings-page-home {
 
 }
 
+.alert-button-group {
+  display: flex !important;
+  flex-direction: row !important;
+  padding: 0 !important;
+}
+.alert-button-group button {
+  width: 50% !important;
+}
+
 ion-card {
-  border-left: 4px solid #ffcd00;
+  border-left: 6px solid #f5a623;
   border-radius: 4px;
   width: 100% !important;
   margin: 0 0 15px 0 !important;
@@ -29,6 +38,7 @@ ion-card {
 .training-popup-card .time {
   color: #bababa !important;
   font-weight: 400 !important;
+  font-size: 14px !important;
 }
 
 .mytrainings-block {

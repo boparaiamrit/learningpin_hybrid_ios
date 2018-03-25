@@ -24,7 +24,9 @@ export class LoginPage {
         }, 1);
     }
 
-    wa
+    back() {
+        this.navCtrl.setRoot(DomainPage, {}, {animate: true, direction: "forward"});
+    }
 
     async login() {
         let loading = this.loadingCtrl.create({
@@ -46,12 +48,17 @@ export class LoginPage {
                     this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
                 }, error => {
                     loading.dismiss();
+
+                    if (error.status == 401) {
+                        var message = "Invalid Credentials";
+                    } else {
+                        var message = "Invalid Domain";
+                    }
                     this.Toast.create({
-                        message: 'Invalid Credentials!',
+                        message: message,
                         duration: 3000,
                         position: 'bottom'
                     }).present();
-                    // this.error = true;
                 });
         });
 

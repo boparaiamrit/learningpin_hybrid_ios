@@ -8,7 +8,7 @@ import {ViewChild} from '@angular/core';
 
 
 @Component({
-    selector: 'page-login',
+    selector: 'mytrainings-page-home',
     templateUrl: 'my-trainings.html',
     styleUrls: ['assets/main.css'],
 })

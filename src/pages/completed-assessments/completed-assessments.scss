@@ -2,15 +2,30 @@ page-home {
 
 }
 
-ion-card {
-  border-left: 4px solid #ffcd00;
+.completed-assessment-page ion-card {
+  border-left: 4px solid #f5a623 !important;
   border-radius: 4px;
   width: 100% !important;
-  margin: 0 0 15px 0 !important;
+  margin: 0 0 20px 0 !important;
+  border: 1px solid #dedede;
 }
 
-.attempt-button {
-  margin: 0 !important;
+.completed-assessment-page h4 {
+  color:#222 !important;
+}
+
+.completed-assessment-page .bold {
+  color:#000000;
+}
+
+.completed-assessment-page .attempt-button {
+  margin: 10px 0 0 0 !important;
+  border-radius: 5px !important;
+}
+
+.completed-assessment-page .yellow-font{
+ font-size: 1.6rem;
+  color: #f5a623 !important;
 }
 
 .training-card {
@@ -34,7 +49,7 @@ ion-card {
 }
 
 .date {
-  font-size: 12px;
+  font-size: 14px;
   color: #ffcd00;
   font-weight: 600;
   margin: 0;
@@ -51,10 +66,6 @@ ion-card {
   color: #ffffff;
   font-size: 14px;
   font-weight: 600;
-}
-
-.alert-button-group {
-  padding: 10px 20px !important;
 }
 
 .alert-md .alert-button .button-inner {
