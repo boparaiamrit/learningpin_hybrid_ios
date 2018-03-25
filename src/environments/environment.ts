@@ -1,11 +1,11 @@
 export const environment = {
     production: true,
     firebase: {
-        apiKey: "AIzaSyA-0PcizppG86ecw2Hwp9vtpLj4DQDQZVg",
-        authDomain: "learning-pin-trainer.firebaseapp.com",
-        databaseURL: "https://learning-pin-trainer.firebaseio.com",
-        projectId: "learning-pin-trainer",
-        storageBucket: "learning-pin-trainer.appspot.com",
-        messagingSenderId: "53836320767"
+        apiKey: "AIzaSyBL64DbfCDxhhB88W-kDb1m1YJi_BqiAEM",
+        authDomain: "learningpin-4919e.firebaseapp.com",
+        databaseURL: "https://learningpin-4919e.firebaseio.com",
+        projectId: "learningpin-4919e",
+        storageBucket: "learningpin-4919e.appspot.com",
+        messagingSenderId: "885389482998"
     }
 };

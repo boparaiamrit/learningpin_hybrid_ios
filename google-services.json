@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "885389482998",
+    "firebase_url": "https://learningpin-4919e.firebaseio.com",
+    "project_id": "learningpin-4919e",
+    "storage_bucket": "learningpin-4919e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885389482998:android:16ff17e8f1af9deb",
+        "android_client_info": {
+          "package_name": "com.klumpster.learningpin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885389482998-2smnha76ui05dq7ldvvjtv241p0m9dkr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.klumpster.learningpin",
+            "certificate_hash": "7e4cec170850ef69e9a7f897fb889b89737d18d9"
+          }
+        },
+        {
+          "client_id": "885389482998-95c1jmg1rnlc5b13o7tv1j5hi85s5sea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdpgQFDHZaEWgEbqLyaNxYlaxKMsEx55k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885389482998-95c1jmg1rnlc5b13o7tv1j5hi85s5sea.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "885389482998-ee78ipiavksg8eegijmhne70u1tnofis.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.klumpster.learningpin"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
