@@ -7,7 +7,6 @@ import {HomePage} from "../pages/home/home";
 import {DomainPage} from "../pages/domain/domain";
 import {LogoutPage} from "../pages/logout/logout";
 import {PendingApprovals} from "../pages/pending-approvals/pending-approvals";
-import {Headers, RequestOptions} from "@angular/http";
 import {Storage} from "@ionic/storage";
 import {GlobalProvider} from "../providers/global/global";
 import {ApprovedTrainings} from "../pages/approved-trainings/approved-trainings";
@@ -16,6 +15,7 @@ import {CompletedTrainings} from "../pages/completed-trainings/completed-trainin
 import {Profile} from "../pages/profile/profile";
 import {Mydownloads} from "../pages/mydownloads/mydownloads";
 import {IDP} from "../pages/idp/idp";
+import {TrainingAttachments} from "../pages/training-attachments/training-attachments";
 
 @Component({
     templateUrl: 'app.html'
@@ -25,7 +25,7 @@ export class MyApp {
 
     rootPage: any = DomainPage;
 
-    pages: Array<{ title: string, component: any }>;
+    pages: Array<{title: string, component: any}>;
 
     constructor(public platform: Platform, public statusBar: StatusBar, public keyboard: Keyboard, public LocalStorage: Storage, public splashScreen: SplashScreen, public global: GlobalProvider) {
         this.initializeApp();
@@ -37,6 +37,7 @@ export class MyApp {
             {title: 'Approved Trainings', component: ApprovedTrainings},
             {title: 'Completed Trainings', component: CompletedTrainings},
             {title: 'Completed Assessments', component: CompletedAssessments},
+            {title: 'Training Attachments', component: TrainingAttachments},
             {title: 'Profile', component: Profile},
             {title: 'Downloads', component: Mydownloads},
             {title: 'IDP', component: IDP},

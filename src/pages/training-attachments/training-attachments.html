@@ -1,12 +1,12 @@
 <style>
-    .completed-trainings-page {
+    .training-attachments-page {
         padding: 10px 0 0 0;
         height: 100%;
         width: 100%;
         font-size: 16px;
     }
 </style>
-<div class="main-page completed-trainings-page">
+<div class="training-attachments-page">
     <ion-header no-border>
         <ion-navbar color="yellow" hideBackButton="true">
             <button ion-button menuToggle>
@@ -18,8 +18,8 @@
     <ion-content>
         <ion-scroll scrollY="true" style="height:100%;">
             <div class="mytrainings-block">
-                <div class="" *ngFor="let training of completed_trainings; let i = index">
-                    <ion-card (click)='giveFeedback(training.name,training.time,training.date,training.id,training.feedback_id)' tappable>
+                <div class="" *ngFor="let training of trainings_for_attachement; let i = index">
+                    <ion-card (click)="attachfile()" tappable>
                         <ion-card-content>
                             <div class="training-card">
                                 <div>
@@ -34,6 +34,7 @@
                     </ion-card>
                 </div>
             </div>
+            <p (click)="uploadImage()" tappable>upload</p>
         </ion-scroll>
     </ion-content>
 </div>

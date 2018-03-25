@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {ErrorHandler, NgModule} from "@angular/core";
-import {IonicApp, IonicModule} from "ionic-angular";
+import {IonicApp, IonicModule, Slides} from "ionic-angular";
 import {MyApp} from "./app.component";
 import {HomePage} from "../pages/home/home";
 import {ListPage} from "../pages/list/list";
@@ -26,20 +26,22 @@ import {File} from "@ionic-native/file";
 import {LocalNotifications} from "@ionic-native/local-notifications";
 import {PendingApprovals} from "../pages/pending-approvals/pending-approvals";
 import {ApprovedTrainings} from "../pages/approved-trainings/approved-trainings";
-import {GlobalProvider} from '../providers/global/global';
-import {Calendar} from '@ionic-native/calendar';
-import {Slides} from 'ionic-angular';
+import {GlobalProvider} from "../providers/global/global";
+import {Calendar} from "@ionic-native/calendar";
 import {giveAssessment} from "../pages/giveAssessment/giveAssessment";
 import {takeAssessment} from "../pages/takeAssessment/takeAssessment";
 import {CompletedAssessments} from "../pages/completed-assessments/completed-assessments";
 import {CompletedTrainings} from "../pages/completed-trainings/completed-trainings";
 import {takeFeedback} from "../pages/takeFeedback/takeFeedback";
 import {Profile} from "../pages/profile/profile";
-import {RoundProgressModule, RoundProgressConfig} from 'angular-svg-round-progressbar';
+import {RoundProgressModule, RoundProgressConfig} from "angular-svg-round-progressbar";
 import {Mydownloads} from "../pages/mydownloads/mydownloads";
 import {IDP} from "../pages/idp/idp";
 import {AmChartsModule} from "@amcharts/amcharts3-angular";
 import {ForgotPassword} from "../pages/forgot-password/forgot-password";
+import {TrainingAttachments} from "../pages/training-attachments/training-attachments";
+import {Camera} from "@ionic-native/camera";
+import {FilePath} from "@ionic-native/file-path";
 
 @NgModule({
     declarations: [
@@ -63,6 +65,7 @@ import {ForgotPassword} from "../pages/forgot-password/forgot-password";
         Mydownloads,
         IDP,
         ForgotPassword,
+        TrainingAttachments,
     ],
     imports: [
         BrowserModule,
@@ -118,6 +121,7 @@ import {ForgotPassword} from "../pages/forgot-password/forgot-password";
         CompletedTrainings,
         takeFeedback,
         Profile,
+        TrainingAttachments,
         Mydownloads,
         IDP,
         ForgotPassword,
@@ -130,9 +134,11 @@ import {ForgotPassword} from "../pages/forgot-password/forgot-password";
         SplashScreen,
         Calendar,
         Slides,
+        Camera,
         Keyboard,
         StreamingMedia,
         GlobalProvider,
+        FilePath,
         RoundProgressConfig,
         RoundProgressModule,
         {provide: ErrorHandler, useClass: myExceptionHandler},

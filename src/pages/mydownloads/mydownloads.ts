@@ -18,7 +18,7 @@ export class Mydownloads {
     error: boolean = false;
 
     constructor(private afAuth: AngularFireAuth, public global: GlobalProvider, private http: Http, public file: File, private streamingMedia: StreamingMedia, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
-        file.listDir(file.externalDataDirectory, '').then((result) => {
+        file.listDir(file.documentsDirectory, '').then((result) => {
             console.log(result);
             /*result will have an array of file objects with
              file details or if its a directory*/
@@ -43,7 +43,7 @@ export class Mydownloads {
         let options: StreamingVideoOptions = {
             orientation: 'landscape',
         };
-        this.file.checkFile(this.file.externalDataDirectory, name).then(
+        this.file.checkFile(this.file.documentsDirectory, name).then(
             (result) => {
                 this.streamingMedia.playVideo(video_url, options);
             }

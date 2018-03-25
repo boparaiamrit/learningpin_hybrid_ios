@@ -45,7 +45,7 @@ export class LearningsPage {
 
     public download(url, name, file_id) {
         const fileTransfer: FileTransferObject = this.transfer.create();
-        this.file.checkFile(this.file.externalDataDirectory, name).then(
+        this.file.checkFile(this.file.documentsDirectory, name).then(
             (result) => {
                 if (this.downloading) {
                     this.global.showToast("Downloading is already in progress.", 2000, 'bottom');
@@ -74,10 +74,10 @@ export class LearningsPage {
                         position: 'middle'
                     }).present();
 
-                    console.log(this.file.externalDataDirectory + name);
+                    console.log(this.file.documentsDirectory + name);
                     console.log(url);
 
-                    fileTransfer.download(url, this.file.externalDataDirectory + name).then((entry) => {
+                    fileTransfer.download(url, this.file.documentsDirectory + name).then((entry) => {
                         this.localNotifications.clear(file_id);
                         this.global.showToast("Download Completed.", 2000, 'bottom');
                         this.downloading = false;
@@ -105,9 +105,9 @@ export class LearningsPage {
         let options: StreamingVideoOptions = {
             orientation: 'landscape',
         };
-        this.file.checkFile(this.file.externalDataDirectory, name).then(
+        this.file.checkFile(this.file.documentsDirectory, name).then(
             (result) => {
-                this.streamingMedia.playVideo(this.file.externalDataDirectory + name, options);
+                this.streamingMedia.playVideo(this.file.documentsDirectory + name, options);
             }
         ).catch(
             (err) => {
