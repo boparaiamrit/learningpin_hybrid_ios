@@ -1,10 +1,10 @@
-import {Component} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {NavController, ToastController, LoadingController, AlertController, Slides} from "ionic-angular";
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
-import {Calendar} from '@ionic-native/calendar';
-import {ViewChild} from '@angular/core';
+import {Calendar} from "@ionic-native/calendar";
+import {GlobalProvider} from "../../providers/global/global";
 
 
 @Component({
@@ -43,7 +43,7 @@ export class MyTrainingPage {
 
     @ViewChild(Slides) slider: Slides;
 
-    constructor(private afAuth: AngularFireAuth, private http: Http, public navCtrl: NavController, public calender: Calendar, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    constructor(private afAuth: AngularFireAuth, public global: GlobalProvider, private http: Http, public navCtrl: NavController, public calender: Calendar, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
         this.date = new Date();
         this.monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         this.dayNames = ['Monday', "Tuesday", 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -66,11 +66,7 @@ export class MyTrainingPage {
                         }
                     });
                 }, error => {
-                    this.Toast.create({
-                        message: 'Please login to proceed!',
-                        duration: 2000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Please login to proceed!", 2000, 'bottom');
                 });
             });
         });
@@ -134,18 +130,10 @@ export class MyTrainingPage {
                                         } else {
                                             message = "Already enrolled."
                                         }
-                                        this.Toast.create({
-                                            message: message,
-                                            duration: 3000,
-                                            position: 'middle'
-                                        }).present();
+                                        this.global.showToast(message, 3000, 'bottom');
                                     }, error => {
                                         loading.dismiss();
-                                        this.Toast.create({
-                                            message: 'Something went wrong.Try again later.',
-                                            duration: 3000,
-                                            position: 'middle'
-                                        }).present();
+                                        this.global.showToast("Something went wrong.Try again later.", 2000, 'bottom');
                                         // this.error = true;
                                     });
                             });

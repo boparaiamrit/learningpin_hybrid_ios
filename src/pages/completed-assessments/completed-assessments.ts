@@ -3,7 +3,6 @@ import {NavController, ToastController, LoadingController, AlertController, App}
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
-import {LoginPage} from "../login/login";
 import {giveAssessment} from "../giveAssessment/giveAssessment";
 import {GlobalProvider} from "../../providers/global/global";
 
@@ -17,7 +16,7 @@ export class CompletedAssessments {
     assessments = [];
     error: boolean = false;
 
-    constructor(private afAuth: AngularFireAuth, private http: Http, public global: GlobalProvider,private app: App, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    constructor(private afAuth: AngularFireAuth, private http: Http, public global: GlobalProvider, private app: App, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
         this.completedAssessments();
     }
 
@@ -38,17 +37,13 @@ export class CompletedAssessments {
                     console.log(this.assessments);
                 }, error => {
                     loading.dismiss();
-                    this.Toast.create({
-                        message: 'Please login to proceed!',
-                        duration: 2000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Please login to proceed!", 2000, 'bottom');
                 });
             });
         });
     }
 
-    public attemptAssessment(assessment_id,training_id) {
+    public attemptAssessment(assessment_id, training_id) {
         let loading = this.loadingCtrl.create({
             content: 'Please wait...'
         });
@@ -71,11 +66,7 @@ export class CompletedAssessments {
                     this.app.getRootNav().push(giveAssessment);
                 }, error => {
                     loading.dismiss();
-                    this.Toast.create({
-                        message: 'Please login to proceed!',
-                        duration: 2000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Please login to proceed!", 2000, 'bottom');
                 });
             });
         });

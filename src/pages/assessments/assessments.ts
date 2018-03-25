@@ -3,7 +3,6 @@ import {NavController, ToastController, LoadingController, AlertController, App}
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
-import {LoginPage} from "../login/login";
 import {giveAssessment} from "../giveAssessment/giveAssessment";
 import {GlobalProvider} from "../../providers/global/global";
 
@@ -38,11 +37,7 @@ export class AssessmentsPage {
                     console.log(this.assessments);
                 }, error => {
                     loading.dismiss();
-                    this.Toast.create({
-                        message: 'Please login to proceed!',
-                        duration: 2000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Please login to proceed!", 2000, 'bottom');
                 });
             });
         });
@@ -72,11 +67,7 @@ export class AssessmentsPage {
                     this.app.getRootNav().push(giveAssessment);
                 }, error => {
                     loading.dismiss();
-                    this.Toast.create({
-                        message: 'Please login to proceed!',
-                        duration: 2000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Please login to proceed!", 2000, 'bottom');
                 });
             });
         });

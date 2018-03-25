@@ -1,11 +1,9 @@
 import {Component} from "@angular/core";
-import {NavController, ToastController, LoadingController, AlertController, Slides, App} from "ionic-angular";
+import {NavController, ToastController, LoadingController, AlertController, App} from "ionic-angular";
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
-import {Calendar} from '@ionic-native/calendar';
-import {ViewChild} from '@angular/core';
-import {giveAssessment} from "../giveAssessment/giveAssessment";
+import {Calendar} from "@ionic-native/calendar";
 import {GlobalProvider} from "../../providers/global/global";
 import {takeFeedback} from "../takeFeedback/takeFeedback";
 
@@ -33,11 +31,7 @@ export class CompletedTrainings {
                 this.http.get(link, options).subscribe(data => {
                     this.completed_trainings = data.json().complete_trainings;
                 }, error => {
-                    this.Toast.create({
-                        message: 'Please login to proceed!',
-                        duration: 2000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Please login to proceed!", 2000, 'bottom');
                 });
             });
         });
@@ -72,30 +66,22 @@ export class CompletedTrainings {
                             this.LocalStorage.get('user').then((user) => {
                                 let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
                                 var options = new RequestOptions({headers: headers});
-                                var link = domain + '/api/feedbacks/' + feedback_id+"?training_id="+id;
+                                var link = domain + '/api/feedbacks/' + feedback_id + "?training_id=" + id;
                                 this.http.get(link, options).subscribe(data => {
                                     // this.navCtrl.push(HomePage);
                                     loading.dismiss();
-                                    let response=data.json();
+                                    let response = data.json();
                                     this.global.feedback = response.feedback;
                                     // this.navCtrl.push(giveAssessment);
                                     console.log(this.global.feedback);
-                                    if(response.success){
+                                    if (response.success) {
                                         this.app.getRootNav().push(takeFeedback);
-                                    }else{
-                                        this.Toast.create({
-                                            message: response.message,
-                                            duration: 2000,
-                                            position: 'bottom'
-                                        }).present();
+                                    } else {
+                                        this.global.showToast(response.message, 2000, 'bottom');
                                     }
                                 }, error => {
                                     loading.dismiss();
-                                    this.Toast.create({
-                                        message: 'Please login to proceed!',
-                                        duration: 2000,
-                                        position: 'bottom'
-                                    }).present();
+                                    this.global.showToast("Please login to proceed!", 2000, 'bottom');
                                 });
                             });
                         });

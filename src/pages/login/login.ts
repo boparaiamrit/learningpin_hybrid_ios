@@ -54,11 +54,7 @@ export class LoginPage {
                     } else {
                         var message = "Invalid Domain";
                     }
-                    this.Toast.create({
-                        message: message,
-                        duration: 3000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast(message,3000,'bottom');
                 });
         });
 

@@ -3,11 +3,10 @@ import {NavController, ToastController, LoadingController, AlertController, Plat
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
-import {LoginPage} from "../login/login";
 import {GlobalProvider} from "../../providers/global/global";
 import {HomePage} from "../home/home";
-import moment from 'moment';
-import {RoundProgressModule, RoundProgressConfig} from 'angular-svg-round-progressbar';
+import moment from "moment";
+import {RoundProgressModule} from "angular-svg-round-progressbar";
 
 @Component({
     selector: 'page-login',
@@ -136,21 +135,13 @@ export class takeAssessment {
                         loading.dismiss();
                         var response = data.json();
                         if (response.success) {
-                            this.Toast.create({
-                                message: "Assessment completed successfully.",
-                                duration: 3000,
-                                position: 'middle'
-                            }).present();
+                            this.global.showToast("Assessment completed successfully.", 2000, 'bottom');
                             this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
                         }
 
                     }, error => {
                         loading.dismiss();
-                        this.Toast.create({
-                            message: 'Something went wrong.Try again later.',
-                            duration: 3000,
-                            position: 'middle'
-                        }).present();
+                        this.global.showToast("Something went wrong.Try again later.", 2000, 'bottom');
                     });
             });
         });

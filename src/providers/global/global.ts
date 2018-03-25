@@ -1,11 +1,12 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
+import {ToastController} from "ionic-angular";
 
 /*
-  Generated class for the GlobalProvider provider.
+ Generated class for the GlobalProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+ See https://angular.io/guide/dependency-injection for more info on providers
+ and Angular DI.
+ */
 @Injectable()
 export class GlobalProvider {
     public user_name: string;
@@ -18,8 +19,15 @@ export class GlobalProvider {
     public feedback;
     public home_page_name;
 
-    constructor() {
+    constructor(public Toast: ToastController) {
 
     }
 
+    showToast(message, duration = 3000, position = "bottom") {
+        this.Toast.create({
+            message: message,
+            duration: duration,
+            position: position
+        }).present();
+    }
 }

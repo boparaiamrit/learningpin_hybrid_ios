@@ -3,7 +3,6 @@ import {NavController, ToastController, LoadingController, AlertController, Plat
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
-import {LoginPage} from "../login/login";
 import {GlobalProvider} from "../../providers/global/global";
 import {HomePage} from "../home/home";
 
@@ -112,21 +111,13 @@ export class takeFeedback {
                         loading.dismiss();
                         var response = data.json();
                         if (response.success) {
-                            this.Toast.create({
-                                message: "Feedback completed successfully.",
-                                duration: 3000,
-                                position: 'middle'
-                            }).present();
+                            this.global.showToast("Feedback completed successfully.", 3000, 'middle');
                             this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
                         }
 
                     }, error => {
                         loading.dismiss();
-                        this.Toast.create({
-                            message: 'Something went wrong.Try again later.',
-                            duration: 3000,
-                            position: 'middle'
-                        }).present();
+                        this.global.showToast("Something went wrong.Try again later.", 3000, 'middle');
                     });
             });
         });

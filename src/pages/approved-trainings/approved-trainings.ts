@@ -3,6 +3,7 @@ import {NavController, ToastController, LoadingController, AlertController} from
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
+import {GlobalProvider} from "../../providers/global/global";
 
 @Component({
     selector: 'page-login',
@@ -14,7 +15,7 @@ export class ApprovedTrainings {
     approved_trainings = [];
     error: boolean = false;
 
-    constructor(private afAuth: AngularFireAuth, private http: Http, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    constructor(private afAuth: AngularFireAuth, public global:GlobalProvider,private http: Http, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
         this.approvedTrainings();
     }
 
@@ -29,11 +30,7 @@ export class ApprovedTrainings {
                 // this.navCtrl.push(HomePage);
                 this.approved_trainings = data.json().approved_trainings;
             }, error => {
-                this.Toast.create({
-                    message: 'Please login to proceed!',
-                    duration: 2000,
-                    position: 'bottom'
-                }).present();
+                this.global.showToast("Please login to proceed!", 2000, 'bottom');
             });
         });
         });

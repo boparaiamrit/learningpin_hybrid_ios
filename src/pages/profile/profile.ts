@@ -3,9 +3,7 @@ import {NavController, ToastController, LoadingController, AlertController, Plat
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
-import {LoginPage} from "../login/login";
 import {GlobalProvider} from "../../providers/global/global";
-import {HomePage} from "../home/home";
 
 @Component({
     selector: 'page-login',
@@ -65,11 +63,7 @@ export class Profile {
                     this.cities = data.json();
                     this.user_city = this.cities[0].id;
                 }, error => {
-                    this.Toast.create({
-                        message: 'Please login to proceed!',
-                        duration: 2000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Please login to proceed!", 2000, 'bottom');
                 });
             });
         });
@@ -96,11 +90,7 @@ export class Profile {
                 this.http.post(link, myData, options)
                     .subscribe(data => {
                         loading.dismiss();
-                        this.Toast.create({
-                            message: 'Profile updated successfully.',
-                            duration: 3000,
-                            position: 'bottom'
-                        }).present();
+                        this.global.showToast("Profile updated successfully.", 2000, 'bottom');
                         var updated_data = data.json();
                         this.global.user_name = updated_data.name;
                         this.global.user_email = updated_data.email;
@@ -111,17 +101,9 @@ export class Profile {
                         if (error.status == 403) {
                             errors = error.json().errors;
                             for (var first_error in error.json().errors) break;
-                            this.Toast.create({
-                                message: errors[first_error][0],
-                                duration: 3000,
-                                position: 'bottom'
-                            }).present();
+                            this.global.showToast(errors[first_error][0], 2000, 'bottom');
                         } else {
-                            this.Toast.create({
-                                message: 'Something went wrong.',
-                                duration: 3000,
-                                position: 'bottom'
-                            }).present();
+                            this.global.showToast("Something went wrong.", 2000, 'bottom');
                         }
                     });
             });

@@ -1,10 +1,11 @@
 import {Component} from "@angular/core";
 import {NavController, ToastController, LoadingController, AlertController} from "ionic-angular";
-import {Http, Headers, RequestOptions} from "@angular/http";
+import {Http} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
 import {File} from "@ionic-native/file";
 import {StreamingMedia, StreamingVideoOptions} from "@ionic-native/streaming-media";
+import {GlobalProvider} from "../../providers/global/global";
 
 @Component({
     selector: 'page-login',
@@ -16,11 +17,11 @@ export class Mydownloads {
     files = [];
     error: boolean = false;
 
-    constructor(private afAuth: AngularFireAuth, private http: Http, public file: File, private streamingMedia: StreamingMedia, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    constructor(private afAuth: AngularFireAuth, public global: GlobalProvider, private http: Http, public file: File, private streamingMedia: StreamingMedia, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
         file.listDir(file.externalDataDirectory, '').then((result) => {
             console.log(result);
             /*result will have an array of file objects with
-            file details or if its a directory*/
+             file details or if its a directory*/
             for (let file of result) {
                 if (file.isDirectory == true && file.name != '.' && file.name != '..') {
                     // Code if its a folder
@@ -48,11 +49,7 @@ export class Mydownloads {
             }
         ).catch(
             (err) => {
-                this.Toast.create({
-                    message: 'File not found.',
-                    duration: 2000,
-                    position: 'bottom'
-                }).present();
+                this.global.showToast("File not found.", 2000, 'bottom');
             })
     }
 }

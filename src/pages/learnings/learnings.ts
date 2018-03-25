@@ -4,7 +4,6 @@ import {Http, Headers, RequestOptions} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
 import {StreamingMedia, StreamingVideoOptions} from "@ionic-native/streaming-media";
-import {HomePage} from "../home/home";
 import {FileTransfer, FileTransferObject} from "@ionic-native/file-transfer";
 import {File} from "@ionic-native/file";
 import {LocalNotifications} from "@ionic-native/local-notifications";
@@ -38,11 +37,7 @@ export class LearningsPage {
                     // this.navCtrl.push(HomePage);
                     this.mylearnings = data.json().learnings;
                 }, error => {
-                    this.Toast.create({
-                        message: 'Please login to proceed!',
-                        duration: 2000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Please login to proceed!", 2000, 'bottom');
                 });
             });
         });
@@ -53,18 +48,10 @@ export class LearningsPage {
         this.file.checkFile(this.file.externalDataDirectory, name).then(
             (result) => {
                 if (this.downloading) {
-                    this.Toast.create({
-                        message: 'Downloading is already in progress.',
-                        duration: 1000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Downloading is already in progress.", 2000, 'bottom');
                 } else {
                     console.log("files found");
-                    this.Toast.create({
-                        message: 'File already exists.',
-                        duration: 1000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("File already exists.", 2000, 'bottom');
                     this.fileExist = true;
                 }
             }
@@ -72,11 +59,7 @@ export class LearningsPage {
             (err) => {
                 console.log("files not found ");
                 if (this.downloading) {
-                    this.Toast.create({
-                        message: 'Downloading is already in progress.',
-                        duration: 1000,
-                        position: 'bottom'
-                    }).present();
+                    this.global.showToast("Downloading is already in progress.", 2000, 'bottom');
                 }
                 else {
                     console.log(file_id);
@@ -96,20 +79,12 @@ export class LearningsPage {
 
                     fileTransfer.download(url, this.file.externalDataDirectory + name).then((entry) => {
                         this.localNotifications.clear(file_id);
-                        this.Toast.create({
-                            message: 'Download Completed.',
-                            duration: 1000,
-                            position: 'bottom'
-                        }).present();
+                        this.global.showToast("Download Completed.", 2000, 'bottom');
                         this.downloading = false;
                         console.log('download complete: ' + entry.toURL());
                     }, (error) => {
                         console.log(error);
-                        this.Toast.create({
-                            message: 'Oops! Something went wrong. Try again later.',
-                            duration: 1000,
-                            position: 'bottom'
-                        }).present();
+                        this.global.showToast("Oops! Something went wrong. Try again later.", 2000, 'bottom');
                     });
 
                     fileTransfer.onProgress((progressEvent) => {
