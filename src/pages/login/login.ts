@@ -44,6 +44,7 @@ export class LoginPage {
 
                     this.global.user_name = user_data.name;
                     this.global.user_email = user_data.email;
+                    this.global.is_logged_in = true;
                     loading.dismiss();
                     this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
                 }, error => {
@@ -55,7 +56,7 @@ export class LoginPage {
                         var message = "Invalid Domain";
                     }
 
-                    this.global.showToast(message,3000,'bottom');
+                    this.global.showToast(message, 3000, 'bottom');
                 });
         });
 

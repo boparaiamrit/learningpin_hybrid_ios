@@ -18,6 +18,7 @@ export class GlobalProvider {
     public assessment;
     public feedback;
     public home_page_name;
+    public is_logged_in = false;
 
     constructor(public Toast: ToastController) {
 
