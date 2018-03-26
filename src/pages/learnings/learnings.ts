@@ -70,7 +70,7 @@ export class LearningsPage {
                     });
                     this.Toast.create({
                         message: "Downloading...",
-                        duration: 700,
+                        duration: 3000,
                         position: 'middle'
                     }).present();
 
