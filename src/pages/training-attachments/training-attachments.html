@@ -18,6 +18,7 @@
     <ion-content>
         <ion-scroll scrollY="true" style="height:100%;">
             <div class="mytrainings-block">
+                <p class="attachment-message">Click on the training to attach file</p>
                 <div class="" *ngFor="let training of trainings_for_attachement; let i = index">
                     <ion-card (click)="attachfile(training.id)" tappable>
                         <ion-card-content>

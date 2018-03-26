@@ -15,7 +15,7 @@ import {AmChartsService, AmChart} from "@amcharts/amcharts3-angular";
 export class IDP {
     private trainingChart: AmChart;
     private assessmenstChart: AmChart;
-    private learningChart: AmChart;
+    private videosChart: AmChart;
     domain = "";
     files = [];
     error: boolean = false;
@@ -95,6 +95,34 @@ export class IDP {
                             "align": "center",
                             "size": 15,
                             "text": "Assessments",
+                            "color": "#000000"
+                        }, {
+                            "y": "46%",
+                            "align": "center",
+                            "size": 25,
+                            "text": "____",
+                            "color": "#ffca2c"
+                        }],
+                    });
+                    this.videosChart = this.AmCharts.makeChart("videos_chart", {
+                        "type": "pie",
+                        "theme": "light",
+                        "dataProvider": JSON.parse(data.json().videos_data),
+                        "titleField": "title",
+                        "valueField": "value",
+                        "colorField": "color",
+                        "labelRadius": 5,
+                        "radius": "40%",
+                        "innerRadius": "60%",
+                        "labelText": "[[value]]%",
+                        "export": {
+                            "enabled": false
+                        },
+                        "allLabels": [{
+                            "y": "46%",
+                            "align": "center",
+                            "size": 15,
+                            "text": "Videos",
                             "color": "#000000"
                         }, {
                             "y": "46%",
