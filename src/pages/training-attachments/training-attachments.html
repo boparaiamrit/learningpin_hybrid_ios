@@ -12,14 +12,14 @@
             <button ion-button menuToggle>
                 <ion-icon name="menu"></ion-icon>
             </button>
-            <ion-title>Completed Trainings</ion-title>
+            <ion-title>Trainings Attachments</ion-title>
         </ion-navbar>
     </ion-header>
     <ion-content>
         <ion-scroll scrollY="true" style="height:100%;">
             <div class="mytrainings-block">
                 <div class="" *ngFor="let training of trainings_for_attachement; let i = index">
-                    <ion-card (click)="attachfile()" tappable>
+                    <ion-card (click)="attachfile(training.id)" tappable>
                         <ion-card-content>
                             <div class="training-card">
                                 <div>
@@ -34,7 +34,6 @@
                     </ion-card>
                 </div>
             </div>
-            <p (click)="uploadImage()" tappable>upload</p>
         </ion-scroll>
     </ion-content>
 </div>

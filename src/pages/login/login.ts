@@ -14,8 +14,8 @@ import {ForgotPassword} from "../forgot-password/forgot-password";
     styleUrls: ['assets/main.css'],
 })
 export class LoginPage {
-    username = "";
-    password = "";
+    username = "raman@gmail.com";
+    password = "secret";
     error: boolean = false;
 
     constructor(private afAuth: AngularFireAuth, private http: Http, public navCtrl: NavController, public global: GlobalProvider, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public platform: Platform) {

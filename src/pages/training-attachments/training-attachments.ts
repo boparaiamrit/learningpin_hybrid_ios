@@ -28,6 +28,8 @@ export class TrainingAttachments {
     error: boolean = false;
     lastImage: string = null;
     loading;
+    photo;
+    trainingID;
 
     constructor(private afAuth: AngularFireAuth, public global: GlobalProvider, public camera: Camera, private http: Http, public navCtrl: NavController, public calender: Calendar, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public actionSheetCtrl: ActionSheetController, public platform: Platform, private filePath: FilePath, public file: File, private transfer: FileTransfer) {
         this.trainings();
@@ -38,7 +40,7 @@ export class TrainingAttachments {
             this.LocalStorage.get('user').then((user) => {
                 let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
                 var options = new RequestOptions({headers: headers});
-                var link = domain + '/api/trainings';
+                var link = domain + '/api/trainings-for-attachment';
                 this.http.get(link, options).subscribe(data => {
                     this.trainings_for_attachement = data.json().my_trainings;
                 }, error => {
@@ -48,7 +50,8 @@ export class TrainingAttachments {
         });
     }
 
-    public attachfile() {
+    public attachfile(training_id) {
+        this.trainingID = training_id;
         let actionSheet = this.actionSheetCtrl.create({
             title: 'Select Image Source',
             buttons: [
@@ -84,6 +87,7 @@ export class TrainingAttachments {
 
         // Get the data of an image
         this.camera.getPicture(options).then((imagePath) => {
+            // this.photo = 'data:image/jpeg;base64,' + imageData;
             // Special handling for Android library
             if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
                 this.filePath.resolveNativePath(imagePath)
@@ -98,7 +102,7 @@ export class TrainingAttachments {
                 this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
             }
         }, (err) => {
-            // this.global.showToast('Error while selecting image.', 2000, "bottom")
+            this.global.showToast('Error while selecting image.', 2000, "bottom")
         });
     }
 
@@ -114,13 +118,14 @@ export class TrainingAttachments {
     private copyFileToLocalDir(namePath, currentName, newFileName) {
         this.file.copyFile(namePath, currentName, this.file.dataDirectory, newFileName).then(success => {
             this.lastImage = newFileName;
+            this.uploadImage();
         }, error => {
             this.presentToast('Error while storing file.');
         });
     }
 
     private presentToast(text) {
-        this.global.showToast(text, 2000, 'bottom');
+        this.global.showToast(text, 2000, 'middle');
     }
 
 // Always get the accurate path to your apps folder
@@ -134,7 +139,8 @@ export class TrainingAttachments {
 
     public uploadImage() {
         // Destination URL
-        var url = this.global.domain + '/api/training/attach-file';
+        var url = this.global.domain + "/api/training/attach-file";
+
         // File for Upload
         var targetPath = this.pathForImage(this.lastImage);
 
@@ -146,7 +152,7 @@ export class TrainingAttachments {
             fileName: filename,
             chunkedMode: false,
             mimeType: "multipart/form-data",
-            params: {'fileName': filename}
+            params: {'fileName': filename, "training_id": this.trainingID}
         };
 
         const fileTransfer: FileTransferObject = this.transfer.create();
@@ -159,7 +165,7 @@ export class TrainingAttachments {
         // Use the FileTransfer to upload the image
         fileTransfer.upload(targetPath, url, options).then(data => {
             this.loading.dismissAll()
-            this.presentToast('Image successful uploaded.');
+            this.presentToast("File uploaded successfully");
         }, err => {
             this.loading.dismissAll()
             this.presentToast('Error while uploading file.');

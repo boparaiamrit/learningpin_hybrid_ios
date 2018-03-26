@@ -12,7 +12,7 @@ import {GlobalProvider} from "../../providers/global/global";
     styleUrls: ['assets/main.css'],
 })
 export class DomainPage {
-    domain = "";
+    domain = "staging";
     error: boolean = false;
 
     constructor(private afAuth: AngularFireAuth, public global: GlobalProvider, private http: Http, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController) {
