@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {NavController, ToastController, LoadingController, Platform} from "ionic-angular";
+import {NavController, ToastController, LoadingController, Platform, MenuController} from "ionic-angular";
 import {Http} from "@angular/http";
 import {AngularFireAuth} from "angularfire2/auth";
 import {Storage} from "@ionic/storage";
@@ -18,10 +18,13 @@ export class LoginPage {
     password = "secret";
     error: boolean = false;
 
-    constructor(private afAuth: AngularFireAuth, private http: Http, public navCtrl: NavController, public global: GlobalProvider, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public platform: Platform) {
+    constructor(private menuCtrl: MenuController,private afAuth: AngularFireAuth, private http: Http, public navCtrl: NavController, public global: GlobalProvider, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public platform: Platform) {
+        // this.menuCtrl.enable(false, 'sideMenu');
+
         platform.registerBackButtonAction(() => {
-            this.navCtrl.setRoot(DomainPage, {}, {animate: true, direction: "forward"});
+            this.navCtrl.setRoot(LoginPage, {}, {animate: true, direction: "forward"});
         }, 1);
+        // this.global.is_logged_in_page = true;
     }
 
     back() {
@@ -41,10 +44,12 @@ export class LoginPage {
                 .subscribe(data => {
                     var user_data = data.json().user;
                     this.LocalStorage.set('user', user_data);
+                    this.LocalStorage.set('token', user_data.api_token);
 
                     this.global.user_name = user_data.name;
                     this.global.user_email = user_data.email;
                     this.global.is_logged_in = true;
+                    this.global.token = user_data.api_token;
                     loading.dismiss();
                     this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
                 }, error => {

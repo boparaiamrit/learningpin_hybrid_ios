@@ -32,7 +32,7 @@ export class Profile {
         this.email = this.global.user_email;
         this.LocalStorage.get('domain').then((domain) => {
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 var options = new RequestOptions({headers: headers});
                 var link = domain + '/api/profile-with-state-city';
                 this.http.get(link, options).subscribe(data => {
@@ -56,7 +56,7 @@ export class Profile {
     public getCities(state_id) {
         this.LocalStorage.get('domain').then((domain) => {
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 var options = new RequestOptions({headers: headers});
                 var link = domain + '/api/meta/cities/' + state_id;
                 this.http.get(link, options).subscribe(data => {
@@ -77,7 +77,7 @@ export class Profile {
         loading.present();
         this.LocalStorage.get('domain').then((domain) => {
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 var options = new RequestOptions({headers: headers});
                 var link = domain + '/api/profile';
                 var myData = {

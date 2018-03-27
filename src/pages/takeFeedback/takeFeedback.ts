@@ -102,7 +102,7 @@ export class takeFeedback {
         this.LocalStorage.get('domain').then((domain) => {
             loading.present();
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 options = new RequestOptions({headers: headers});
                 var link = domain + '/api/feedbacks/' + feedback_id;
                 var mydata = {training_id: training_id, answers: JSON.stringify(this.answers)};

@@ -54,7 +54,7 @@ export class MyTrainingPage {
     public trainings() {
         this.LocalStorage.get('domain').then((domain) => {
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 var options = new RequestOptions({headers: headers});
                 var link = domain + '/api/trainings';
                 this.http.get(link, options).subscribe(data => {
@@ -116,7 +116,7 @@ export class MyTrainingPage {
                         this.LocalStorage.get('domain').then((domain) => {
                             loading.present();
                             this.LocalStorage.get('user').then((user) => {
-                                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                                 options = new RequestOptions({headers: headers});
                                 var link = domain + '/api/trainings/enroll/' + id;
                                 var mydata = "";

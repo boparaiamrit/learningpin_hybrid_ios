@@ -28,7 +28,7 @@ export class AssessmentsPage {
         this.LocalStorage.get('domain').then((domain) => {
             loading.present();
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 var options = new RequestOptions({headers: headers});
                 var link = domain + '/api/assessments';
                 this.http.get(link, options).subscribe(data => {
@@ -55,7 +55,7 @@ export class AssessmentsPage {
         this.LocalStorage.get('domain').then((domain) => {
             loading.present();
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 var options = new RequestOptions({headers: headers});
                 var link = domain + '/api/assessments/' + assessment_id;
                 this.http.get(link, options).subscribe(data => {

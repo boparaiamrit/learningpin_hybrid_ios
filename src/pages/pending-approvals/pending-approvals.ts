@@ -24,7 +24,7 @@ export class PendingApprovals {
         this.LocalStorage.get('domain').then((domain) => {
 
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 var options = new RequestOptions({headers: headers});
                 var link = domain + '/api/trainings/pending-approvals';
                 this.http.get(link, options).subscribe(data => {
@@ -65,7 +65,7 @@ export class PendingApprovals {
                                     this.training_user_ids.push(obj);
                                 });
                                 console.log(this.training_user_ids);
-                                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                                 options = new RequestOptions({headers: headers});
                                 var link = domain + '/api/trainings/approve-all';
                                 var mydata = {
@@ -121,7 +121,7 @@ export class PendingApprovals {
                             loading.present();
                             this.LocalStorage.get('user').then((user) => {
                                 console.log(user.id);
-                                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                                 options = new RequestOptions({headers: headers});
                                 var link = domain + '/api/trainings/approve/' + id + "?action=Discard&user_id=" + user_id;
                                 var mydata = "";
@@ -159,7 +159,7 @@ export class PendingApprovals {
             });
             loading.present();
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 options = new RequestOptions({headers: headers});
                 var link = domain + '/api/trainings/approve/' + id + "?action=Accept&user_id=" + user_id;
                 var mydata = "";

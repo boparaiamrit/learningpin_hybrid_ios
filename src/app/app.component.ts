@@ -40,7 +40,7 @@ export class MyApp {
             {title: 'Training Attachments', component: TrainingAttachments},
             {title: 'Profile', component: Profile},
             {title: 'Downloads', component: Mydownloads},
-            {title: 'IDP', component: IDP},
+            {title: 'Progress Chart', component: IDP},
             {title: 'Logout', component: LogoutPage}
         ];
 

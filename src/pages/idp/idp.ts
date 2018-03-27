@@ -6,6 +6,7 @@ import {Storage} from "@ionic/storage";
 import {File} from "@ionic-native/file";
 import {StreamingMedia, StreamingVideoOptions} from "@ionic-native/streaming-media";
 import {AmChartsService, AmChart} from "@amcharts/amcharts3-angular";
+import {GlobalProvider} from "../../providers/global/global";
 
 @Component({
     selector: 'page-login',
@@ -16,6 +17,7 @@ export class IDP {
     private trainingChart: AmChart;
     private assessmenstChart: AmChart;
     private videosChart: AmChart;
+    private learningsChart: AmChart;
     domain = "";
     files = [];
     error: boolean = false;
@@ -32,7 +34,7 @@ export class IDP {
         },
     ];
 
-    constructor(private AmCharts: AmChartsService, private afAuth: AngularFireAuth, private http: Http, public file: File, private streamingMedia: StreamingMedia, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+    constructor(public global:GlobalProvider,private AmCharts: AmChartsService, private afAuth: AngularFireAuth, private http: Http, public file: File, private streamingMedia: StreamingMedia, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     }
 
     ionViewDidEnter() {
@@ -42,7 +44,7 @@ export class IDP {
         loading.present();
         this.LocalStorage.get('domain').then((domain) => {
             this.LocalStorage.get('user').then((user) => {
-                let headers = new Headers({'Authorization': 'Bearer ' + user.api_token});
+                let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
                 var options = new RequestOptions({headers: headers});
                 var link = domain + '/api/user/idp/report';
                 this.http.get(link, options).subscribe(data => {
@@ -56,20 +58,20 @@ export class IDP {
                         "valueField": "value",
                         "colorField": "color",
                         "labelRadius": 5,
-                        "radius": "40%",
+                        "radius": "42%",
                         "innerRadius": "60%",
                         "labelText": "[[value]]%",
                         "export": {
                             "enabled": false
                         },
                         "allLabels": [{
-                            "y": "46%",
+                            "y": "44%",
                             "align": "center",
                             "size": 15,
                             "text": "Trainings",
                             "color": "#000000"
                         }, {
-                            "y": "46%",
+                            "y": "44%",
                             "align": "center",
                             "size": 25,
                             "text": "____",
@@ -84,20 +86,20 @@ export class IDP {
                         "valueField": "value",
                         "colorField": "color",
                         "labelRadius": 5,
-                        "radius": "40%",
+                        "radius": "42%",
                         "innerRadius": "60%",
                         "labelText": "[[value]]%",
                         "export": {
                             "enabled": false
                         },
                         "allLabels": [{
-                            "y": "46%",
+                            "y": "44%",
                             "align": "center",
                             "size": 15,
                             "text": "Assessments",
                             "color": "#000000"
                         }, {
-                            "y": "46%",
+                            "y": "44%",
                             "align": "center",
                             "size": 25,
                             "text": "____",
@@ -112,20 +114,48 @@ export class IDP {
                         "valueField": "value",
                         "colorField": "color",
                         "labelRadius": 5,
-                        "radius": "40%",
+                        "radius": "42%",
                         "innerRadius": "60%",
                         "labelText": "[[value]]%",
                         "export": {
                             "enabled": false
                         },
                         "allLabels": [{
-                            "y": "46%",
+                            "y": "44%",
                             "align": "center",
                             "size": 15,
                             "text": "Videos",
                             "color": "#000000"
                         }, {
-                            "y": "46%",
+                            "y": "44%",
+                            "align": "center",
+                            "size": 25,
+                            "text": "____",
+                            "color": "#ffca2c"
+                        }],
+                    });
+                    this.learningsChart = this.AmCharts.makeChart("learnings_chart", {
+                        "type": "pie",
+                        "theme": "light",
+                        "dataProvider": JSON.parse(data.json().videos_data),
+                        "titleField": "title",
+                        "valueField": "value",
+                        "colorField": "color",
+                        "labelRadius": 5,
+                        "radius": "42%",
+                        "innerRadius": "60%",
+                        "labelText": "[[value]]%",
+                        "export": {
+                            "enabled": false
+                        },
+                        "allLabels": [{
+                            "y": "44%",
+                            "align": "center",
+                            "size": 15,
+                            "text": "Learnings",
+                            "color": "#000000"
+                        }, {
+                            "y": "44%",
                             "align": "center",
                             "size": 25,
                             "text": "____",
