@@ -9,6 +9,44 @@ ion-card {
   margin: 0 0 15px 0 !important;
 }
 
+.assessment-page .assessment-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #dedfe4;
+}
+
+.assessment-page .assessment-card p {
+  color: #000000;
+  margin-top: 10px;
+  padding: 0 10px;
+}
+
+.assessment-page .assessment-card button {
+  color: #f5a623;
+  margin-top: 30px !important;
+  border-top: 1px solid #dedfe4;
+  background: #ffffff;
+}
+
+.assessment-page .assessment-card button .button-inner {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.assessment-page .assessment-heading h4 {
+  width: 50%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+}
+
+.assessment-page .assessment-heading h4:last-child {
+  text-align: right;
+}
+
 .attempt-button {
   margin: 0 !important;
 }
@@ -33,13 +71,6 @@ ion-card {
   margin: 0;
 }
 
-.date {
-  font-size: 12px;
-  color: #ffcd00;
-  font-weight: 600;
-  margin: 0;
-}
-
 .alert-md .alert-message, .alert-md .alert-input-group {
   padding: 0 20px !important;
 }
@@ -53,13 +84,15 @@ ion-card {
   font-weight: 600;
 }
 
-
 .alert-md .alert-button .button-inner {
   display: flex;
   justify-content: center;
 }
 
-
 .assessment-page ion-card {
   border-left: 0 !important;;
+}
+
+.assessment-page ion-card-content {
+  padding: 0 !important;
 }

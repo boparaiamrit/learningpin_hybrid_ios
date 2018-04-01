@@ -46,13 +46,6 @@ ion-card {
   margin: 0;
 }
 
-.date {
-  font-size: 14px !important;
-  color: #ffcd00 !important;
-  font-weight: 600;
-  margin: 0;
-}
-
 .alert-md .alert-message, .alert-md .alert-input-group {
   padding: 0 20px !important;
 }
@@ -66,7 +59,6 @@ ion-card {
   font-weight: 600;
 }
 
-
 .alert-md .alert-button .button-inner {
   display: flex;
   justify-content: center;
@@ -76,52 +68,60 @@ ion-card {
   padding: 20px;
 }
 
-.card-content-md{
-  padding:12px 8px !important;
+.card-content-md {
+  padding: 12px 8px !important;
 }
 
-.icon.icon-md.ion-md-checkmark{
+.icon.icon-md.ion-md-checkmark {
   padding: 4px !important;
   border-radius: 5px !important;
   margin-right: 6px !important;
   background-color: #ffffff !important;
-  color:#518aff !important;
+  color: #518aff !important;
   box-shadow: 0 1px 3px 0 #9b9b9b;
 }
-.icon.icon-md.ion-md-close{
+
+.icon.icon-md.ion-md-close {
   padding: 4px 6px !important;
   border-radius: 5px !important;
   margin-right: 6px !important;
   background-color: #ffffff !important;
-  color:#ff1744 !important;
+  color: #ff1744 !important;
   box-shadow: 0 1px 3px 0 #9b9b9b;
 }
 
-.pending-assessment-page .scroll-content,.pending-assessment-page .fixed-content{
-margin-top: 0!important;
+.pending-assessment-page .scroll-content, .pending-assessment-page .fixed-content {
+  margin-top: 0 !important;
 }
 
-
-.pending-assessment-page .scroll-content{
-padding: 2px !important;
+.pending-assessment-page .scroll-content {
+  padding: 2px !important;
 }
 
-.pending-assessment-page .card-md{
+.pending-assessment-page .card-md {
   box-shadow: 1px 0px 4px 0 rgba(0, 0, 0, 0.16) !important;
 }
 
-
-.pending-assessment-page .approve-all{
+.pending-assessment-page .approve-all {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 20px;
 }
 
-
-.pending-assessment-page .approve-all .ion-md-checkmark{
- margin-right: 0 !important;
- margin-left: 10px !important;
+.pending-assessment-page .approve-all .ion-md-checkmark {
+  margin-right: 0 !important;
+  margin-left: 10px !important;
 }
 
+.approved-trainings-page ion-card-content {
+  padding: 10px 15px !important;
+}
 
+.approved-trainings-page ion-card-content .training-card h4 {
+  margin-bottom: 5px !important;
+}
+
+.approved-trainings-page ion-card-content .training-card p {
+  margin-bottom: 0 !important;
+}

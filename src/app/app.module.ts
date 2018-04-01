@@ -42,6 +42,8 @@ import {ForgotPassword} from "../pages/forgot-password/forgot-password";
 import {TrainingAttachments} from "../pages/training-attachments/training-attachments";
 import {Camera} from "@ionic-native/camera";
 import {FilePath} from "@ionic-native/file-path";
+import {Media} from "@ionic-native/media";
+
 
 @NgModule({
     declarations: [
@@ -136,6 +138,7 @@ import {FilePath} from "@ionic-native/file-path";
         Slides,
         Camera,
         Keyboard,
+        Media,
         StreamingMedia,
         GlobalProvider,
         FilePath,

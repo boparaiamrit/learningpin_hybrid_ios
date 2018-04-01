@@ -33,13 +33,6 @@ ion-card {
   margin: 0;
 }
 
-.date {
-  font-size: 12px;
-  color: #ffcd00;
-  font-weight: 600;
-  margin: 0;
-}
-
 .alert-md .alert-message, .alert-md .alert-input-group {
   padding: 0 20px !important;
 }
@@ -56,4 +49,41 @@ ion-card {
 .alert-md .alert-button .button-inner {
   display: flex;
   justify-content: center;
+}
+
+.give-assessment-page .assessment-info {
+  padding: 15px;
+}
+
+.give-assessment-page .assessment-info .assessment-info-card {
+  box-shadow: 0 2px 4px 0 #9b9b9b !important;
+}
+
+.give-assessment-page .assessment-info .assessment-info-card h4 {
+  margin-bottom: 0;
+  padding: 10px;
+  border-bottom: 1px solid #dedfe4;
+}
+
+.give-assessment-page .assessment-info .assessment-info-card p {
+  margin-top: 10px;
+  padding: 0 12px;
+}
+
+.give-assessment-page .assessment-info button {
+  color: #f5a623;
+  border-top: 1px solid #dedfe4;
+  background: #ffffff;
+  width: 50%;
+  margin: 0;
+  border-radius: 0 !important;
+}
+
+.give-assessment-page .assessment-info button:first-child {
+  border-right: 1px solid #dedfe4;
+}
+
+.give-assessment-page .assessment-info button .button-inner {
+  text-transform: uppercase;
+  font-weight: 500;
 }

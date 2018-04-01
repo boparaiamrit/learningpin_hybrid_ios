@@ -6,79 +6,6 @@
         font-size: 16px;
     }
 
-    .logo {
-        width: 150px;
-        height: 115px;
-        margin-bottom: 110px;
-    }
-
-    .flex {
-        display: flex;
-    }
-
-    .justify-center {
-        justify-content: center;
-    }
-
-    .login-btn {
-        width: 100%;
-        background: #ffffff;
-        border-radius: 50px;
-        font-weight: 600;
-        padding: 12px;
-        font-size: 14px;
-        color: #b765d3;
-        margin-top: 30px;
-    }
-
-    .form .item-md {
-        background: transparent;
-        color: #ffffff;
-        padding-left: 0;
-    }
-
-    .item-input .label-md, .item-select .label-md, .item-datetime .label-md {
-        color: #ffffff;
-    }
-
-    .form {
-        padding: 0 20px;
-    }
-
-    .domain-form.list-md .item-block .item-inner {
-        border-bottom: 2px solid red !important;
-    }
-
-    .domain-field {
-        width: 150px !important;
-        font-size: 16px;
-        font-weight: 600;
-    }
-
-    .domain-block {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-    }
-
-    .domain-block h4 {
-        margin: 0;
-        color: #ffffff;
-    }
-
-    .assessment-action-btn {
-        width: 50% !important;
-        margin: 0 !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-    }
-
-    /*assessment_id	4*/
-    /*assessment_name	Assessment 4*/
-    /*time	None*/
-    /*no_of_questions	6*/
-    /*correct_answer_marks	4*/
-    /*max_marks	24*/
 </style>
 <div class="give-assessment-page">
     <ion-header no-border>
@@ -89,26 +16,26 @@
             <ion-title>Assessment</ion-title>
         </ion-navbar>
     </ion-header>
-    <div style="padding: 0 20px">
-        <h4 class="mt-0 text-center yellow-font bold">{{global.assessment.assessment_name}}</h4>
-        <p class="flex space-between"><span>Time Limit:</span><span>{{global.assessment.time}}</span>
-        </p>
-        <p class="flex space-between">
-            <span>Total Number of Questons:</span><span>{{global.assessment.no_of_questions}}</span></p>
-        <p class="flex space-between"><span>Marks for Each Correct Answer:</span><span>{{global.assessment.correct_answer_marks}}</span>
-        </p>
-        <p class="flex space-between"><span>Marks for Each Wrong Answer:</span><span>0</span></p>
-        <p class="flex space-between"><span>Maximum Marks:</span><span>{{global.assessment.max_marks}}</span></p>
+    <div class="assessment-info">
+        <div class="assessment-info-card">
+            <div>
+                <h4 class="mt-0 text-center yellow-font bold">{{global.assessment.assessment_name}}</h4>
+                <p>Time Limit - {{global.assessment.time}}</p>
+                <p>Total Number of Questons - {{global.assessment.no_of_questions}}</p>
+                <p>Marks for Each Correct Answer - {{global.assessment.correct_answer_marks}}</p>
+                <p><span>Marks for Each Wrong Answer - </span><span>0</span></p>
+                <p>Maximum Marks - {{global.assessment.max_marks}}</p>
+            </div>
+            <div class="flex space-between">
+                <button ion-button color="light-yellow" class="assessment-action-btn"
+                        (click)="cancelAssessment()">
+                    Cancel Test
+                </button>
+                <button ion-button color="yellow" class="assessment-action-btn"
+                        (click)="attemptAssessment(global.assessment_id,global.training_id)">
+                    Start Test
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="flex space-between">
-        <button ion-button color="light-yellow" class="assessment-action-btn"
-                (click)="cancelAssessment()">
-            Cancel Test
-        </button>
-        <button ion-button color="yellow" class="assessment-action-btn"
-                (click)="attemptAssessment(global.assessment_id,global.training_id)">
-            Start Test
-        </button>
-    </div>
-
 </div>

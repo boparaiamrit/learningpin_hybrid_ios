@@ -32,6 +32,7 @@ export class takeAssessment {
     mytimeout = null; // the current timeoutID
     timer;
     current_timer;
+    current_question = 1;
     alert = this.alertCtrl.create({
         title: '',
         message: 'Are you sure you wanna cancel this test ? All progress will be lost.',
@@ -92,6 +93,7 @@ export class takeAssessment {
         if (this.count >= this.total_questions) {
             console.log("last question");
         } else {
+            this.current_question += 1;
             this.getQuestion(this.count);
         }
     }

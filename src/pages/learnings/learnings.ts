@@ -20,6 +20,7 @@ export class LearningsPage {
     error: boolean = false;
     fileExist = false;
     downloading = false;
+    playbacktime = 0;
 
     constructor(private afAuth: AngularFireAuth, private http: Http, public global: GlobalProvider, public navCtrl: NavController, public Toast: ToastController, public LocalStorage: Storage, public loadingCtrl: LoadingController, public alertCtrl: AlertController, private streamingMedia: StreamingMedia, public platform: Platform, private transfer: FileTransfer, private file: File, private localNotifications: LocalNotifications,) {
         this.global.home_page_name = "Learning";
@@ -101,9 +102,33 @@ export class LearningsPage {
         )
     }
 
-    public play(name, video_url) {
+    public play(name, video_url, id, video_duration) {
+        this.playbacktime = 0;
+        var status = "Started";
+        setTimeout(() => {
+            this.playbacktime += 1;
+        }, 1000);
+
         let options: StreamingVideoOptions = {
             orientation: 'landscape',
+            successCallback: () => {
+                if (this.playbacktime >= (video_duration * 0.8)) {
+                    status = "Completed";
+                }
+                this.LocalStorage.get('domain').then((domain) => {
+                    this.LocalStorage.get('user').then((user) => {
+                        let headers = new Headers({'Authorization': 'Bearer ' + this.global.token});
+                        var options = new RequestOptions({headers: headers});
+                        var link = domain + "/api/change/user-video-status?id=" + id + "&status=" + status;
+                        // var link = domain + '/api/profile';
+                        var mydata = "";
+                        this.http.post(link, mydata, options)
+                            .subscribe(data => {
+                            }, error => {
+                            });
+                    });
+                });
+            },
         };
         this.file.checkFile(this.file.documentsDirectory, name).then(
             (result) => {

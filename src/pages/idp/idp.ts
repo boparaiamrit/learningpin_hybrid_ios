@@ -53,6 +53,8 @@ export class IDP {
                     this.trainingChart = this.AmCharts.makeChart("trainings_chart", {
                         "type": "pie",
                         "theme": "light",
+                        "startDuration":0,
+                        "fontSize": 15,
                         "dataProvider": JSON.parse(data.json().trainings_data),
                         "titleField": "title",
                         "valueField": "value",
@@ -81,6 +83,8 @@ export class IDP {
                     this.assessmenstChart = this.AmCharts.makeChart("assessments_chart", {
                         "type": "pie",
                         "theme": "light",
+                        "startDuration":0,
+                        "fontSize": 15,
                         "dataProvider": JSON.parse(data.json().assessments_data),
                         "titleField": "title",
                         "valueField": "value",
@@ -109,6 +113,8 @@ export class IDP {
                     this.videosChart = this.AmCharts.makeChart("videos_chart", {
                         "type": "pie",
                         "theme": "light",
+                        "startDuration":0,
+                        "fontSize": 15,
                         "dataProvider": JSON.parse(data.json().videos_data),
                         "titleField": "title",
                         "valueField": "value",
@@ -137,6 +143,8 @@ export class IDP {
                     this.learningsChart = this.AmCharts.makeChart("learnings_chart", {
                         "type": "pie",
                         "theme": "light",
+                        "fontSize": 15,
+                        "startDuration":0,
                         "dataProvider": JSON.parse(data.json().videos_data),
                         "titleField": "title",
                         "valueField": "value",

@@ -20,16 +20,7 @@
         justify-content: center;
     }
 
-    .login-btn {
-        width: 100%;
-        background: #ffffff;
-        border-radius: 50px;
-        font-weight: 600;
-        padding: 12px;
-        font-size: 14px;
-        color: #b765d3;
-        margin-top: 30px;
-    }
+
 
     .form .item-md {
         background: transparent;
@@ -76,11 +67,14 @@
         </ion-navbar>
     </ion-header>
     <ion-content padding>
-        <div>
+        <div *ngIf="pending_approvals.length" >
             <div class="approve-all">
                 <h6>Approve All</h6>
             <ion-icon name="checkmark" class="approve-all-icon" (click)='approveAll()' tappable></ion-icon>
             </div>
+        </div>
+        <div *ngIf="!pending_approvals.length">
+            <p>No Pending Approvals.</p>
         </div>
         <div class="" *ngFor="let pending_approval of pending_approvals; let i = index">
             <ion-card>

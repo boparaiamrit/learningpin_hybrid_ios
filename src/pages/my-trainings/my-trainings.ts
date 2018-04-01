@@ -18,6 +18,8 @@ export class MyTrainingPage {
     trainingDates = [];
     error: boolean = false;
     date: any;
+    realDay: any;
+    realDateBackEnd: any;
 
     daysInThisMonth0: any;
     daysInLastMonth0: any;
@@ -47,6 +49,7 @@ export class MyTrainingPage {
         this.date = new Date();
         this.monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         this.dayNames = ['Monday', "Tuesday", 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        this.realDay = this.dayNames[this.date.getDay() - 1];
         this.trainings();
         this.getDaysOfMonth();
     }
@@ -59,6 +62,7 @@ export class MyTrainingPage {
                 var link = domain + '/api/trainings';
                 this.http.get(link, options).subscribe(data => {
                     this.mytrainings = data.json().my_trainings;
+                    this.realDateBackEnd = data.json().current_day;
                     const mytrainingsString = JSON.stringify(this.mytrainings);
                     JSON.parse(mytrainingsString, (key, value) => {
                         if (key == 'date') {
@@ -162,7 +166,7 @@ export class MyTrainingPage {
         this.currentMonth = this.monthNames[this.date.getMonth()];
         this.currentYear = this.date.getFullYear();
         this.currentRealDate = new Date().getDate();
-        this.currentDay = this.dayNames[this.date.getDay()];
+        this.currentDay = this.dayNames[this.date.getDay() - 1];
         if (this.date.getMonth() === new Date().getMonth()) {
             this.currentDate = new Date().getDate();
         } else {
@@ -236,7 +240,6 @@ export class MyTrainingPage {
     }
 
     loadPrev() {
-        console.log('Prev');
         let newIndex = this.slider.getActiveIndex();
 
         newIndex++;
@@ -248,7 +251,6 @@ export class MyTrainingPage {
 
         this.date = new Date(this.date.getFullYear(), this.date.getMonth(), 0);
         this.getDaysOfMonth();
-        console.log(`New status: ${this.numbers}`);
     }
 
     loadNext() {
@@ -260,7 +262,6 @@ export class MyTrainingPage {
         }
 
 
-        console.log('Next');
         let newIndex = this.slider.getActiveIndex();
         this.date = new Date(this.date.getFullYear(), this.date.getMonth() + 2, 0);
         this.getDaysOfMonth();
@@ -271,7 +272,5 @@ export class MyTrainingPage {
 
         // Workaround to make it work: breaks the animation
         this.slider.slideTo(newIndex, 0, false);
-
-        console.log(`New status: ${this.numbers}`);
     }
 }

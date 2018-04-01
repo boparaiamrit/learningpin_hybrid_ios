@@ -20,16 +20,7 @@
         justify-content: center;
     }
 
-    .login-btn {
-        width: 100%;
-        background: #ffffff;
-        border-radius: 50px;
-        font-weight: 600;
-        padding: 12px;
-        font-size: 14px;
-        color: #b765d3;
-        margin-top: 30px;
-    }
+
 
     .form .item-md {
         background: transparent;
@@ -67,18 +58,26 @@
     }
 
 </style>
-<div class="my-trainings-page" >
+<div class="my-trainings-page">
     <ion-scroll scrollY="true" style="height:100%;">
         <div class="calendar-header">
             <ion-row class="calendar-month">
                 <ion-col col-2 (click)="goToLastMonth()">
-                    <ion-icon name="arrow-back"></ion-icon>
+                    <ion-icon name="ios-arrow-back"></ion-icon>
                 </ion-col>
                 <ion-col col-8 class="current-month">
-                    {{currentMonth}}, {{currentYear}}
+                    <div>
+                        <div class="black-text">
+                            <!--{{currentDay}}-->
+                        </div>
+                        <div>
+                            <!--{{currentMonth}},{{realDateBackEnd}} {{currentYear}}-->
+                            {{currentMonth}}, {{currentYear}}
+                        </div>
+                    </div>
                 </ion-col>
                 <ion-col col-2 (click)="goToNextMonth()">
-                    <ion-icon name="arrow-forward"></ion-icon>
+                    <ion-icon name="ios-arrow-forward"></ion-icon>
                 </ion-col>
             </ion-row>
         </div>
@@ -130,7 +129,8 @@
                             <span [class]="setClass(day)"
                                   *ngIf="trainingDates.indexOf(currentMonth.substring(0,3) + ' '+day)>=0; else otherDate"
                                   (click)="calenderClick(currentMonth.substring(0,3) + ' '+day)" tappable>{{day}}</span>
-                                    <ng-template #otherDate class="otherDate">{{day}}</ng-template>
+                                    <ng-template #otherDate class="otherDate">{{day}}
+                                    </ng-template>
                                 </ion-col>
                             </div>
 
@@ -168,7 +168,8 @@
         </ion-slides>
 
         <div class="mytrainings-block">
-            <div class="" *ngFor="let training of mytrainings; let i = index">
+            <p class="trainings-heading">Trending Trainings in this Month</p>
+            <div class="" *ngFor="let training of mytrainings">
                 <ion-card (click)='presentConfirm(training.name,training.time,training.date,training.id)' tappable>
                     <ion-card-content>
                         <div class="training-card">

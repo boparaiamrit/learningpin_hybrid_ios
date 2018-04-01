@@ -2,18 +2,22 @@ page-home {
 
 }
 
-ion-card {
-  border-left: 6px solid #f5a623;
-  border-radius: 4px;
-  width: 100% !important;
-  margin: 0 0 15px 0 !important;
+
+.learning-page ion-card {
+  border-left: 0;
+}
+
+.learning-page ion-card-content {
+  padding-bottom: 0 !important;
 }
 
 .learning-card {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
-.learning-card button{
+
+.learning-card button {
   margin: 0;
   padding: 0 10px;
 }
@@ -37,13 +41,6 @@ ion-card {
   margin: 0;
 }
 
-.date {
-  font-size: 12px;
-  color: #ffcd00;
-  font-weight: 600;
-  margin: 0;
-}
-
 .alert-md .alert-message, .alert-md .alert-input-group {
   padding: 0 20px !important;
 }
@@ -57,7 +54,6 @@ ion-card {
   font-weight: 600;
 }
 
-
 .alert-md .alert-button .button-inner {
   display: flex;
   justify-content: center;
@@ -66,4 +62,21 @@ ion-card {
 .learning-card .learning-data {
   padding: 0 0 0 20px !important;
   width: 70%;
+}
+
+.learning-page ion-card button {
+  color: #f5a623;
+  border-top: 1px solid #dedfe4;
+  background: #ffffff;
+  width: 50%;
+  margin: 0;
+  border-radius: 0 !important;
+}
+
+.learning-page ion-card button:first-child {
+  border-right: 1px solid #dedfe4;
+}
+
+.learning-page ion-card button .button-inner {
+  font-weight: 500;
 }

@@ -2,11 +2,37 @@ mytrainings-page-home {
 
 }
 
+.my-trainings-page ion-icon {
+  color: #f5a623;
+  border: 2px solid #f5a623;
+  border-radius: 20px;
+  padding: 2px 8px;
+}
+
+.my-trainings-page .trainings-heading {
+  border-bottom: 2px solid #f5a623;
+  margin-top: 0;
+  padding-bottom: 5px;
+  width: fit-content;
+}
+.my-trainings-page .current-day{
+  color: #f5a623;
+}
+
+.my-trainings-page .black-text, .current-month {
+  margin-bottom: 5px;
+}
+
+.black-text {
+  color: #000000 !important;
+}
+
 .alert-button-group {
   display: flex !important;
   flex-direction: row !important;
   padding: 0 !important;
 }
+
 .alert-button-group button {
   width: 50% !important;
 }
@@ -69,13 +95,6 @@ ion-card {
   margin: 0;
 }
 
-.date {
-  font-size: 14px;
-  color: #ffcd00;
-  font-weight: 600;
-  margin: 0;
-}
-
 .alert-md .alert-message, .alert-md .alert-input-group {
   padding: 0 20px !important;
 }
@@ -112,7 +131,7 @@ ion-card {
 }
 
 .currentDate, .otherDate, .has-event-date {
-  padding: 5px;
+  padding: 8px !important;
 }
 
 .currentDate, .has-event-date {

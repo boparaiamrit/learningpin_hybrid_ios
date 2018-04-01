@@ -31,7 +31,7 @@
             <round-progress [current]=current_timer [max]=timer color='#f5a623'></round-progress>
         </div>
         <div style="padding: 0 20px">
-            <h5 class="text-center bold">{{question}}</h5>
+            <p class="text-center question">{{question}}</p>
             <p class="option" [class.active]="selectedItem == 1" (click)="selectOption(1,question_id,'a')">
                 {{option1}}</p>
             <p class="option" [class.active]="selectedItem == 2" (click)="selectOption(2,question_id,'b')">
@@ -42,15 +42,18 @@
                 {{option4}}</p>
         </div>
     </ion-scroll>
-    <div class="flex space-between assessment-action-btns">
-        <button ion-button color="light-yellow" class="assessment-action-btn"
-                (click)="nextQuestion()">
-            Next Question
-        </button>
-        <button ion-button color="yellow" class="assessment-action-btn"
-                (click)="finishAssessment(global.assessment_id,global.training_id)">
-            Finish Test
-        </button>
+    <div class="assessment-action-btns">
+        <p class="full-width text-center bold">{{current_question}}/{{total_questions}}</p>
+        <div class="flex space-between">
+            <button ion-button color="light-yellow" class="assessment-action-btn"
+                    (click)="nextQuestion()">
+                Next Question
+            </button>
+            <button ion-button color="yellow" class="assessment-action-btn"
+                    (click)="finishAssessment(global.assessment_id,global.training_id)">
+                Finish Test
+            </button>
+        </div>
     </div>
 
 </div>

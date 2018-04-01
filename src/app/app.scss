@@ -14,6 +14,39 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+ion-card {
+  border-left: 5px solid #f5a623 !important;
+  border-radius: 5px;
+  width: 100% !important;
+  margin: 0 0 15px 0 !important;
+}
+
+.login-btn {
+  width: 100%;
+  background: #f5a623;
+  border-radius: 5px;
+  font-weight: 400;
+  padding: 15px;
+  font-size: 16px;
+  color: #ffffff;
+  margin-top: 30px;
+}
+
+.card-ios h3, .card-ios h4, .card-ios h5, .card-ios h6 {
+  font-weight: 600;
+}
+
+.date {
+  font-size: 14px;
+  color: #f5a623 !important;
+  font-weight: 600;
+  margin: 0;
+}
+
+ion-backdrop {
+  opacity: 0.5 !important;
+}
+
 .main-page {
   background: url('../assets/imgs/cd.png') no-repeat center;
   background-size: cover;
@@ -43,6 +76,10 @@
 
 .hide-card .menu-user-detail h2, .hide-card .menu-user-detail p {
   margin: 0;
+}
+
+.hide-card .menu-user-detail h2 {
+  font-weight: 500;
 }
 
 .hide-card p {
@@ -146,7 +183,7 @@
 }
 
 .tabs-ios .tab-button.has-title-only .tab-button-text {
-  font-size: 1.5rem !important;
+  font-size: 1.6rem !important;
   margin: 15px 0 !important;
 }
 
